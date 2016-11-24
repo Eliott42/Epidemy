@@ -8,3 +8,14 @@
 
 #include <stdio.h>
 #include "Position.h"
+
+Position::Position(){
+    _x = 0;
+    _y = 0;
+}
+
+Position::Position(double x, double y){
+    _x = x;
+    _y = y;
+}
+

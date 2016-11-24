@@ -11,6 +11,14 @@
 
 class Position{
     
+private:
+    double _x;
+    double _y;
+    
+public:
+    Position();
+    Position(double x, double y);
+    
 };
 
 #endif /* Position_h */
