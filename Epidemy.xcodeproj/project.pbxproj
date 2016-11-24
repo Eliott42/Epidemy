@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				554A5A9B1DE6F04A00699129 /* main.cpp */,
-				554A5AA21DE6F32300699129 /* Position.cpp */,
 				554A5AA41DE6F34500699129 /* Position.h */,
+				554A5AA21DE6F32300699129 /* Position.cpp */,
 			);
 			path = Epidemy;
 			sourceTree = "<group>";

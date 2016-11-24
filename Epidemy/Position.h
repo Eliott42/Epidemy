@@ -16,8 +16,17 @@ private:
     double _y;
     
 public:
+    // Constructeurs
     Position();
     Position(double x, double y);
+    
+    //Setters
+    void set_Coord_x(double x);
+    void set_Coord_y(double y);
+    
+    //Getters
+    double get_Coord_x();
+    double get_Coord_y();
     
 };
 
