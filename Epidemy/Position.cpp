@@ -1,16 +1,10 @@
 //
-//  main.cpp
+//  Position.cpp
 //  Epidemy
 //
 //  Created by Eliott Jouhaud on 24/11/2016.
 //  Copyright © 2016 Eliott Jouhaud. All rights reserved.
 //
 
-#include <iostream>
-
-int main() {
-    
-    std::cout << "Hello, World!\n";
-    
-    return 0;
-}
+#include <stdio.h>
+#include "Position.h"
