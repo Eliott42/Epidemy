@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include "Position.h"
 
+int bound_right = 100;
+int bound_up = 100;
 
 //Constructeurs
 
@@ -36,7 +38,7 @@ void Position::set_Coord_y(double y){
     _y = y;
 }
 
-// Getters
+//Getters
 
 double Position::get_Coord_x(){
     return _x;
@@ -45,3 +47,40 @@ double Position::get_Coord_x(){
 double Position::get_Coord_y(){
     return _y;
 }
+
+//Functions to move
+
+void Position::Move_left(){
+    if (_x != 0){
+        _x = _x - 1;
+    }
+}
+
+void Position::Move_right(){
+    if (_x != bound_right){
+        _x = _x + 1;
+    }
+}
+
+void Position::Move_down(){
+    if (_y != 0){
+        _y = _y - 1;
+    }
+}
+
+void Position::Move_up(){
+    if (_y != bound_up){
+        _y = _y + 1;
+    }
+}
+
+void Position::Move(){
+    
+}
+
+
+
+
+
+
+
