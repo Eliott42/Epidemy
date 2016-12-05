@@ -27,6 +27,7 @@ public:
     
     // Getter
     char get_Status();
+    Position get_Position();
     
     // Fonctions pour changer le statut
     void Infect();

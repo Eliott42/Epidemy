@@ -37,6 +37,10 @@ char Individual::get_Status(){
     return _status;
 }
 
+Position Individual::get_Position(){
+    return _position;
+}
+
 //-----------------------------------------------------------------
 
 // Fonctions pour changer le statut

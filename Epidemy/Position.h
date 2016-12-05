@@ -35,6 +35,8 @@ public:
     void Move_down();
     void Move();
     
+    // Affichage
+    void Display_pos();
 };
 
 #endif /* Position_h */

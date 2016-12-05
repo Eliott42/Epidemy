@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <time.h>
+#include <iostream>
 
 #include "Position.h"
 
@@ -94,6 +95,14 @@ void Position::Move(){
         case 3:
             Move_up();
     }
+}
+
+//-----------------------------------------------------------------
+
+// Affichage
+
+void Position::Display_pos(){
+    std::cout << "(" << get_Coord_x() << "," << get_Coord_y() << ")\n";
 }
 
 

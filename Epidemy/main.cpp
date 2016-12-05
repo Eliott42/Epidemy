@@ -8,10 +8,22 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "Position.h"
+#include "Individual.h"
 
 int main() {
     
-    std::cout << "Hello, World!\n";
+    Individual Indiv1;
+    
+    Position pos(2,3);
+    Individual Indiv2(pos, 'I');
+    
+    Indiv1.Display_pos_indiv();
+    Indiv2.Display_pos_indiv();
+    std::cout << Indiv2.get_Status() << "\n";
+    
+    Indiv2.get_Position().Move_right();
+    Indiv2.get_Position().Display_pos();
     
     return 0;
 }
