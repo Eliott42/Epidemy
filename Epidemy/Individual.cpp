@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <iostream>
 #include "Position.h"
 #include "Individual.h"
 
@@ -46,6 +47,14 @@ void Individual::Infect(){
 
 void Individual::Recover(){
     set_Status('R');
+}
+
+//-----------------------------------------------------------------
+
+// Affichage
+
+void Individual::Display_pos_indiv(){
+    std::cout << "L'individu est situé en (" << _position.get_Coord_x() << "," << _position.get_Coord_y() << ").\n" ;
 }
 
 

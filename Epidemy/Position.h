@@ -20,15 +20,15 @@ public:
     Position();
     Position(double x, double y);
     
-    //Setters
+    // Setters
     void set_Coord_x(double x);
     void set_Coord_y(double y);
     
-    //Getters
+    // Getters
     double get_Coord_x();
     double get_Coord_y();
     
-    //Functions to move
+    // Functions to move
     void Move_left();
     void Move_right();
     void Move_up();

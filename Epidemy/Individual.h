@@ -32,6 +32,8 @@ public:
     void Infect();
     void Recover();
     
+    // Affichage
+    void Display_pos_indiv();
 };
 
 #endif /* Individual_h */

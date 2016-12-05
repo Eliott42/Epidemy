@@ -31,7 +31,7 @@ Position::Position(double x, double y){
 
 //-----------------------------------------------------------------
 
-//Setters
+// Setters
 
 void Position::set_Coord_x(double x){
     _x = x;
@@ -41,7 +41,7 @@ void Position::set_Coord_y(double y){
     _y = y;
 }
 
-//Getters
+// Getters
 
 double Position::get_Coord_x(){
     return _x;
@@ -53,7 +53,7 @@ double Position::get_Coord_y(){
 
 //-----------------------------------------------------------------
 
-//Functions to move
+// Functions to move
 
 void Position::Move_left(){
     if (_x != 0){
@@ -95,8 +95,6 @@ void Position::Move(){
             Move_up();
     }
 }
-
-
 
 
 
