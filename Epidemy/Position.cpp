@@ -51,6 +51,8 @@ double Position::get_Coord_y(){
     return _y;
 }
 
+//-----------------------------------------------------------------
+
 //Functions to move
 
 void Position::Move_left(){
