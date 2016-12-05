@@ -28,6 +28,10 @@ public:
     // Getter
     char get_Status();
     
+    // Fonctions pour changer le statut
+    void Infect();
+    void Recover();
+    
 };
 
 #endif /* Individual_h */

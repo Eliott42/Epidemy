@@ -37,3 +37,15 @@ char Individual::get_Status(){
 }
 
 //-----------------------------------------------------------------
+
+// Fonctions pour changer le statut
+
+void Individual::Infect(){
+    set_Status('I');
+}
+
+void Individual::Recover(){
+    set_Status('R');
+}
+
+
