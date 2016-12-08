@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include "Position.h"
 #include "Individual.h"
+#include "Character.h"
 
 int main() {
     
@@ -17,13 +18,21 @@ int main() {
     
     Position pos(2,3);
     Individual Indiv2(pos, 'I');
+    Character Pers1(pos);
     
     Indiv1.Display_pos_indiv();
     Indiv2.Display_pos_indiv();
     std::cout << Indiv2.get_Status() << "\n";
+    Pers1.Display_pos_char();
+    Pers1.Move_down();
+    Pers1.Display_pos_char();
+    Pers1.Move_left();
+    Pers1.Display_pos_char();
     
+    /*
     Indiv2.get_Position().Move_right();
     Indiv2.get_Position().Display_pos();
+    */
     
     return 0;
 }

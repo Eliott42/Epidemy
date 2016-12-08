@@ -25,7 +25,7 @@ public:
     Position get_Position();
     
     // Affichage
-    void Display_pos_indiv();
+    void Display_pos_char();
     
     // Fonctions déplacement
     void Move_left();

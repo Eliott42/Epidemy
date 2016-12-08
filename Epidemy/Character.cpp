@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <cstdlib>
+#include <iostream>
 #include "Character.h"
 
 int bound_right = 100;
@@ -16,6 +17,13 @@ int bound_up = 100;
 
 // Constructeurs
 
+Character::Character(){
+    _position = Position();
+}
+
+Character::Character(Position pos){
+    _position = pos;
+}
 
 //-----------------------------------------------------------------
 
@@ -61,3 +69,12 @@ void Character::Move(){
             Move_up();
     }
 }
+
+//-----------------------------------------------------------------
+
+// Affichage
+
+void Character::Display_pos_char(){
+    std::cout << "(" << _position.get_Coord_x() << "," << _position.get_Coord_y() << ").\n" ;
+}
+
