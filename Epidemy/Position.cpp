@@ -7,14 +7,9 @@
 //
 
 #include <stdio.h>
-#include <cstdlib>
-#include <time.h>
 #include <iostream>
 
 #include "Position.h"
-
-int bound_right = 100;
-int bound_up = 100;
 
 //Constructeurs
 
@@ -52,50 +47,6 @@ double Position::get_Coord_y(){
     return _y;
 }
 
-//-----------------------------------------------------------------
-
-// Functions to move
-
-void Position::Move_left(){
-    if (_x != 0){
-        _x = _x - 1;
-    }
-}
-
-void Position::Move_right(){
-    if (_x != bound_right){
-        _x = _x + 1;
-    }
-}
-
-void Position::Move_down(){
-    if (_y != 0){
-        _y = _y - 1;
-    }
-}
-
-void Position::Move_up(){
-    if (_y != bound_up){
-        _y = _y + 1;
-    }
-}
-
-void Position::Move(){
-    int i;
-    srand(time(NULL)); // Initialise la seed de la fonction rand()
-    i = rand()%4; // Génère un nombre aléatoire entre 1 et 4
-    
-    switch (i){
-        case 0:
-            Move_left();
-        case 1:
-            Move_right();
-        case 2:
-            Move_down();
-        case 3:
-            Move_up();
-    }
-}
 
 //-----------------------------------------------------------------
 

@@ -28,15 +28,9 @@ public:
     double get_Coord_x();
     double get_Coord_y();
     
-    // Functions to move
-    void Move_left();
-    void Move_right();
-    void Move_up();
-    void Move_down();
-    void Move();
-    
     // Affichage
     void Display_pos();
+    
 };
 
 #endif /* Position_h */
