@@ -61,7 +61,7 @@ void Character::Move_up(){
 
 void Character::Move(){
     int i;
-    srand(time(NULL)); // Initialise la seed de la fonction rand()
+    srand((int)time(NULL)); // Initialise la seed de la fonction rand()
     i = rand()%4; // Génère un nombre aléatoire entre 1 et 4
     
     switch (i){

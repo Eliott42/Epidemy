@@ -19,7 +19,8 @@ private:
     Character _character_simules[10];
     
 public:
-    Simulator()
+    Simulator(int n);
+    void Tour_de_simulation();
     
 };
 
