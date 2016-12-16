@@ -10,11 +10,11 @@
 #define Individual_h
 
 #include "Position.h"
+#include "Character.h"
 
-class Individual{
+class Individual: public Character{
     
 private:
-    Position _position;
     char _status;
     
 public:
@@ -27,7 +27,6 @@ public:
     
     // Getter
     char get_Status();
-    Position get_Position();
     
     // Fonctions pour changer le statut
     void Infect();

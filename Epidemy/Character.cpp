@@ -25,6 +25,12 @@ Character::Character(Position pos){
     _position = pos;
 }
 
+// Getter
+
+Position Character::get_Position(){
+    return _position;
+}
+
 //-----------------------------------------------------------------
 
 // Fonctions déplacement

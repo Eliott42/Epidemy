@@ -13,7 +13,7 @@
 
 class Character{
 
-private:
+protected:
     Position _position;
     
 public:

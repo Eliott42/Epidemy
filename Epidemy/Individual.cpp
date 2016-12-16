@@ -14,14 +14,16 @@
 // Constructeurs
 
 Individual::Individual(){
-    _position = Position();
+    Character();
     _status = 'S';
 }
 
+/*
 Individual::Individual(Position pos, char status){
-    _position = pos;
+    Character(pos);
     _status = status;
 }
+*/
 
 //-----------------------------------------------------------------
 
@@ -35,10 +37,6 @@ void Individual::set_Status(char status){
 
 char Individual::get_Status(){
     return _status;
-}
-
-Position Individual::get_Position(){
-    return _position;
 }
 
 //-----------------------------------------------------------------
@@ -58,7 +56,7 @@ void Individual::Recover(){
 // Affichage
 
 void Individual::Display_pos_indiv(){
-    std::cout << "L'individu est situé en (" << _position.get_Coord_x() << "," << _position.get_Coord_y() << ").\n" ;
+    std::cout << "L'individu est situé en";
 }
 
 
