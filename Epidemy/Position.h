@@ -31,6 +31,9 @@ public:
     // Affichage
     void Display_pos();
     
+    // Opérateur comparaison de 2 positions
+    bool operator==(Position pos2);
+    
 };
 
 #endif /* Position_h */

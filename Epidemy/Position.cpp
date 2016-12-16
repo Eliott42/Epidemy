@@ -56,6 +56,13 @@ void Position::Display_pos(){
     std::cout << "(" << get_Coord_x() << "," << get_Coord_y() << ")\n";
 }
 
+//-----------------------------------------------------------------
+
+// Opérateur comparaison de 2 positions
+
+bool Position::operator==(Position pos2){
+    return ((_x == pos2.get_Coord_x()) && (_y == pos2.get_Coord_y()));
+}
 
 
 

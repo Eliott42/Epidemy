@@ -33,6 +33,9 @@ public:
     void Move_up();
     void Move_down();
     void Move();
+    
+    // Comparaison de position entre characters
+    bool Compare_pos_char(Character char1, Character char2);
 
     
 };
