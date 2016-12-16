@@ -20,6 +20,8 @@ int main() {
     Individual Indiv2(pos, 'I');
     Character Pers1(pos);
     
+    std::cout << Indiv2.Compare_pos_char(Pers1);
+    
     Indiv1.Display_pos_indiv();
     //Indiv2.Display_pos_indiv();
     //std::cout << Indiv2.get_Status() << "\n";
@@ -27,16 +29,6 @@ int main() {
     Pers1.Move_down();
     Pers1.Display_pos_char();
     
-    Indiv1.Move_right();
-    Indiv1.Display_pos_char();
-    
-    Indiv2.Move_right();
-    Indiv2.Display_pos_char();
-    
-    /*
-    Indiv2.get_Position().Move_right();
-    Indiv2.get_Position().Display_pos();
-    */
     
     return 0;
 }

@@ -88,8 +88,8 @@ void Character::Display_pos_char(){
 
 // Comparaison de position entre characters
 
-bool Character::Compare_pos_char(Character char1, Character char2){
-    return (char1.get_Position() == char2.get_Position());
+bool Character::Compare_pos_char(Character char2){
+    return (_position == char2.get_Position());
 }
 
 
