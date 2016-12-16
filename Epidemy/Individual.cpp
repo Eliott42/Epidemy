@@ -18,12 +18,11 @@ Individual::Individual(){
     _status = 'S';
 }
 
-/*
-Individual::Individual(Position pos, char status){
-    Character(pos);
+
+Individual::Individual(Position pos, char status) : Character(pos){
     _status = status;
 }
-*/
+
 
 //-----------------------------------------------------------------
 

@@ -11,6 +11,7 @@
 		554A5AA31DE6F32300699129 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AA21DE6F32300699129 /* Position.cpp */; };
 		554A5AA91DF5592C00699129 /* Individual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AA81DF5592C00699129 /* Individual.cpp */; };
 		554A5AAC1DF954F500699129 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AAB1DF954F500699129 /* Character.cpp */; };
+		55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FE93BD1E0421A0006A5454 /* Simulator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		554A5AAA1DF5593C00699129 /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
 		554A5AAB1DF954F500699129 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		554A5AAD1DF9550900699129 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		55FE93BD1E0421A0006A5454 /* Simulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulator.cpp; sourceTree = "<group>"; };
+		55FE93BF1E0421B0006A5454 /* Simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				554A5AAB1DF954F500699129 /* Character.cpp */,
 				554A5AAA1DF5593C00699129 /* Individual.h */,
 				554A5AA81DF5592C00699129 /* Individual.cpp */,
+				55FE93BF1E0421B0006A5454 /* Simulator.h */,
+				55FE93BD1E0421A0006A5454 /* Simulator.cpp */,
 			);
 			path = Epidemy;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				554A5AA31DE6F32300699129 /* Position.cpp in Sources */,
 				554A5A9C1DE6F04A00699129 /* main.cpp in Sources */,
 				554A5AA91DF5592C00699129 /* Individual.cpp in Sources */,
+				55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */,
 				554A5AAC1DF954F500699129 /* Character.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +261,7 @@
 				554A5AA11DE6F04A00699129 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
