@@ -23,17 +23,17 @@ public:
     Individual(Position pos, char status);
     
     // Setter
-    void set_Status(char status);
+    virtual void set_Status(char status);
     
     // Getter
-    char get_Status();
+    virtual char get_Status();
     
     // Fonctions pour changer le statut
-    void Infect();
-    void Recover();
+    virtual void Infect();
+    virtual void Recover();
     
     // Affichage
-    void Display_pos_indiv();
+    virtual void Display_pos_indiv();
 };
 
 #endif /* Individual_h */

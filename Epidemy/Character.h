@@ -22,20 +22,22 @@ public:
     Character(Position pos);
     
     // Getter
-    Position get_Position();
+    virtual Position get_Position();
     
     // Affichage
-    void Display_pos_char();
+    virtual void Display_pos_char();
     
     // Fonctions déplacement
-    void Move_left();
-    void Move_right();
-    void Move_up();
-    void Move_down();
-    void Move();
-    
+    virtual void Move_left();
+    virtual void Move_right();
+    virtual void Move_up();
+    virtual void Move_down();
+    virtual void Move();
+
+    virtual char get_Status() {return '0';}
+
     // Comparaison de position entre characters
-    bool Compare_pos_char(Character char2);
+    virtual bool Compare_pos_char(Character char2);
 
     
 };

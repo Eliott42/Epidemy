@@ -22,7 +22,7 @@ int nb_char = 10;
 Simulator::Simulator(int n){
     _nb_cycles = n;
     for (int i = 0; i < nb_char; i++){
-        _character_simules[i] = Individual();
+        _character_simules[i] = new Individual();
     }
 }
 
@@ -37,15 +37,18 @@ void Simulator::Tour_de_simulation(){
     for (int i = 0; i < nb_char; i++){
         srand((int)time(NULL));
         if ((rand()/RAND_MAX) >= proba_stay){
-            _character_simules[i].Move();
+            _character_simules[i]->Move();
         }
     }
     
     // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté
     for (int i = 0; i < nb_char; i++){
         for (int j = 0; j < nb_char; j++){
-            if ((i != j) && _character_simules[i].Compare_pos_char(_character_simules[j])) {
-                
+            //  && _character_simules[j].get_Status() == 'I'
+            if ((i != j) && _character_simules[i] -> Compare_pos_char(*_character_simules[j])) {
+                if (_character_simules[j]->get_Status() == 'I'){
+                    
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ class Simulator{
     
 private:
     int _nb_cycles;
-    Character _character_simules[10];
+    Character* _character_simules[10];
     
 public:
     Simulator(int n);
