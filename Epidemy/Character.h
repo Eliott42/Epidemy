@@ -24,9 +24,6 @@ public:
     // Getter
     virtual Position get_Position();
     
-    // Affichage
-    virtual void Display_pos_char();
-    
     // Fonctions déplacement
     virtual void Move_left();
     virtual void Move_right();
@@ -43,6 +40,9 @@ public:
     
     // Comparaison de position entre characters
     virtual bool Compare_pos_char(Character char2);
+    
+    // Affichage
+    virtual void Display_info();
 
     static int bound_right;
     static int bound_up;

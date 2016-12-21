@@ -38,7 +38,7 @@ public:
     virtual void actualise_status();
     
     // Affichage
-    virtual void Display_pos_indiv();
+    virtual void Display_info();
 };
 
 #endif /* Individual_h */

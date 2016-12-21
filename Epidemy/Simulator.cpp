@@ -21,18 +21,27 @@ int nb_char = 10;
 // Constructeur
 
 Simulator::Simulator(int n){
-    _nb_cycles = n;
+    _nb_cycles = n; // Initialisation du nb de cycles de la simulation
     srand((int)time(NULL)); // Initialise la seed de la fonction rand()
-    Character::bound_right = 100;
+    Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
     Character::bound_up = 100;
     Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
+    double proba_infect_init = 0.4; // Probabilité que l'individu soit infecté dès le début
+    
     for (int i = 0; i < nb_char; i++){
+        // Génération d'une position aléatoire
         random_pos.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
+        // Création de l'individu à cette position aléatoire
         _character_simules[i] = new Individual(random_pos);
+        // L'individu a une probabilité d'être infecté dès le début
+        if (((double)rand())/RAND_MAX <= proba_infect_init){
+            _character_simules[i] -> Infect();
+        }
     }
 }
 
 // Destructeur
+
 Simulator::~Simulator(){
     for (int i = 0; i < nb_char; i++){
         delete _character_simules[i];
@@ -58,7 +67,7 @@ void Simulator::Tour_de_simulation(){
         if (p >= proba_stay){
             _character_simules[i]->Move();
         }
-        _character_simules[i]->Display_pos_char();
+        _character_simules[i]->Display_info();
     }
     
     // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
@@ -94,6 +103,6 @@ void Simulator::Tour_de_simulation(){
 
 void Simulator::Dislay_pos_simules(){
     for (int i = 0; i < nb_char; i++){
-        _character_simules[i] -> Display_pos_char();
+        _character_simules[i] -> Display_info();
     }
 }

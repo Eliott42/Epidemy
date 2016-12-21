@@ -92,6 +92,6 @@ bool Character::Compare_pos_char(Character char2){
 
 // Affichage
 
-void Character::Display_pos_char(){
-    std::cout << "(" << _position.get_coord_x() << "," << _position.get_coord_y() << ").\n" ;
+void Character::Display_info(){
+    std::cout << "(" << _position.get_coord_x() << "," << _position.get_coord_y() << ") " ;
 }

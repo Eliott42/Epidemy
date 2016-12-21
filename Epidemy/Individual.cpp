@@ -72,8 +72,9 @@ void Individual::actualise_status(){
 
 // Affichage
 
-void Individual::Display_pos_indiv(){
-    std::cout << "L'individu est situé en";
+void Individual::Display_info(){
+    Character::Display_info();
+    std::cout << "status " << get_current_status() << "\n";
 }
 
 
