@@ -28,10 +28,11 @@ int main() {
     char1.Move();
     */
 
-    Simulator sim(100);
+    Simulator sim(10);
     
     sim.Dislay_pos_simules();
-    sim.Tour_de_simulation();
+    //sim.simulate_one_cycle();
+    sim.simulate_all();
     sim.Dislay_pos_simules();
     
     

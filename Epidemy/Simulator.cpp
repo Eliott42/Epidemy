@@ -54,7 +54,7 @@ Simulator::~Simulator(){
 
 // Fonction qui lance un tour de la simulation : fait se déplacer (ou non) l'ensemble des individus, puis permet l'infection (ou non) des individus sur la même position
 
-void Simulator::Tour_de_simulation(){
+void Simulator::simulate_one_cycle(){
     double proba_stay = 0.2; // Probabilité de rester sur place
     double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
     double proba_recover = 0.2; // Probabilité de guérir
@@ -94,6 +94,14 @@ void Simulator::Tour_de_simulation(){
     // À la fin du tour, on atualis les statuts des individus
     for (int i = 0; i < nb_char; i++){
         _character_simules[i] -> actualise_status();
+    }
+}
+
+// Fonction lançant la simulation totale : n cycles
+
+void Simulator::simulate_all(){
+    for (int i = 0; i < _nb_cycles; i++){
+        simulate_one_cycle();
     }
 }
 

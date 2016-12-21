@@ -25,7 +25,9 @@ public:
     ~Simulator();
     
     // Fonction pour lancer un tour de la simulation
-    void Tour_de_simulation();
+    void simulate_one_cycle();
+    // Fonction pour lancer la simulation complète
+    void simulate_all();
     
     // Fonction affichage de la position de tous les characters simulés.
     void Dislay_pos_simules();
