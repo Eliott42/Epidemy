@@ -12,8 +12,8 @@
 #include <iostream>
 #include "Character.h"
 
-int bound_right = 100;
-int bound_up = 100;
+int Character::bound_right = 100;
+int Character::bound_up = 100;
 
 // Constructeurs
 

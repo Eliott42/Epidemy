@@ -44,6 +44,9 @@ public:
     // Comparaison de position entre characters
     virtual bool Compare_pos_char(Character char2);
 
+    static int bound_right;
+    static int bound_up;
+
     
 };
 
