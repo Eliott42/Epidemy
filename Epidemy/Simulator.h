@@ -19,8 +19,16 @@ private:
     Character* _character_simules[10];
     
 public:
+    // Constructeur
     Simulator(int n);
+    // Destructeur
+    ~Simulator();
+    
+    // Fonction pour lancer un tour de la simulation
     void Tour_de_simulation();
+    
+    // Fonction affichage de la position de tous les characters simulés.
+    void Dislay_pos_simules();
     
 };
 

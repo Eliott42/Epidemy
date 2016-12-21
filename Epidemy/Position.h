@@ -12,21 +12,21 @@
 class Position{
     
 private:
-    double _x;
-    double _y;
+    int _x;
+    int _y;
     
 public:
     // Constructeurs
     Position();
-    Position(double x, double y);
+    Position(int x, int y);
     
     // Setters
-    void set_Coord_x(double x);
-    void set_Coord_y(double y);
+    void set_Coord_x(int x);
+    void set_Coord_y(int y);
     
     // Getters
-    double get_Coord_x();
-    double get_Coord_y();
+    int get_Coord_x();
+    int get_Coord_y();
     
     // Affichage
     void Display_pos();

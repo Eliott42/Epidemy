@@ -11,23 +11,40 @@
 #include "Position.h"
 #include "Individual.h"
 #include "Character.h"
+#include "Simulator.h"
 
 int main() {
     
-    Individual Indiv1;
+    Position pos(2,2);
+    Character char1(pos);
+    //Character* char1 = new Character(pos);
     
-    Position pos(2,3);
-    Individual Indiv2(pos, 'I');
-    Character Pers1(pos);
+    //char1 -> Move_right();
+    //char1 -> Display_pos_char();
+     
     
-    std::cout << Indiv2.Compare_pos_char(Pers1);
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
+    char1.Move();
+    char1.Display_pos_char();
     
-    Indiv1.Display_pos_indiv();
-    //Indiv2.Display_pos_indiv();
-    //std::cout << Indiv2.get_Status() << "\n";
-    Pers1.Display_pos_char();
-    Pers1.Move_down();
-    Pers1.Display_pos_char();
+    
+    /*
+    Simulator sim(100);
+    
+    sim.Dislay_pos_simules();
+    sim.Tour_de_simulation();
+    sim.Dislay_pos_simules();
+    */
     
     
     return 0;

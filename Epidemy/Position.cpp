@@ -20,7 +20,7 @@ Position::Position(){
 }
 
 //Constructeur ou l'on spécifie en entrée les coordonnées (x,y)
-Position::Position(double x, double y){
+Position::Position(int x, int y){
     _x = x;
     _y = y;
 }
@@ -29,21 +29,21 @@ Position::Position(double x, double y){
 
 // Setters
 
-void Position::set_Coord_x(double x){
+void Position::set_Coord_x(int x){
     _x = x;
 }
 
-void Position::set_Coord_y(double y){
+void Position::set_Coord_y(int y){
     _y = y;
 }
 
 // Getters
 
-double Position::get_Coord_x(){
+int Position::get_Coord_x(){
     return _x;
 }
 
-double Position::get_Coord_y(){
+int Position::get_Coord_y(){
     return _y;
 }
 
