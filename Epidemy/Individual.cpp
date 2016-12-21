@@ -15,12 +15,14 @@
 
 Individual::Individual(){
     Character();
-    _status = 'S';
+    _current_status = 'S';
+    _previous_status = 'S';
 }
 
 
 Individual::Individual(Position pos, char status) : Character(pos){
-    _status = status;
+    _current_status = status;
+    _previous_status = status;
 }
 
 
@@ -28,14 +30,22 @@ Individual::Individual(Position pos, char status) : Character(pos){
 
 // Setter
 
-void Individual::set_Status(char status){
-    _status = status;
+void Individual::set_current_status(char status){
+    _current_status = status;
+}
+
+void Individual::set_previous_status(char status){
+    _previous_status = status;
 }
 
 // Getter
 
-char Individual::get_Status(){
-    return _status;
+char Individual::get_current_status(){
+    return _current_status;
+}
+
+char Individual::get_previous_status(){
+    return _previous_status;
 }
 
 //-----------------------------------------------------------------
@@ -43,12 +53,17 @@ char Individual::get_Status(){
 // Fonctions pour changer le statut
 
 void Individual::Infect(){
-    set_Status('I');
+    set_current_status('I');
 }
 
 void Individual::Recover(){
-    set_Status('R');
+    set_current_status('R');
 }
+
+void Individual::actualise_status(){
+    _previous_status = _current_status;
+}
+
 
 //-----------------------------------------------------------------
 

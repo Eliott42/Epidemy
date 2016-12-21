@@ -60,8 +60,9 @@ void Simulator::Tour_de_simulation(){
     // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
     for (int i = 0; i < nb_char; i++){
         for (int j = 0; j < nb_char; j++){
-            if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_Status() == 'I') {
-                if (((double)rand())/RAND_MAX <= proba_infect){
+            if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
+                // Probabilité d'être infecté si l'on est sain (et non rétabli)
+                if (_character_simules[j]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
                     _character_simules[i] -> Infect();
                 }
             }
@@ -70,11 +71,16 @@ void Simulator::Tour_de_simulation(){
     
     // À la fin du tour, chaque individu infecté à une chance de guérir
     for (int i = 0; i < nb_char; i++){
-        if (_character_simules[i] -> get_Status() == 'I'){
+        if (_character_simules[i] -> get_current_status() == 'I'){
             if (((double)rand())/RAND_MAX <= proba_recover){
                 _character_simules[i] -> Recover();
             }
         }
+    }
+    
+    // À la fin du tour, on atualis les statuts des individus
+    for (int i = 0; i < nb_char; i++){
+        _character_simules[i] -> actualise_status();
     }
 }
 

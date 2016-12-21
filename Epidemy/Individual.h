@@ -15,7 +15,8 @@
 class Individual: public Character{
     
 private:
-    char _status;
+    char _current_status; // Statut actuel de l'individu : sain (S), infecté (I) ou rétabli (R).
+    char _previous_status; // Statut précédent de l'individu, mis à jour à la fin d'un tour de simulation
     
 public:
     // Constructeur
@@ -23,14 +24,17 @@ public:
     Individual(Position pos, char status);
     
     // Setter
-    virtual void set_Status(char status);
+    virtual void set_current_status(char status);
+    virtual void set_previous_status(char status);
     
     // Getter
-    virtual char get_Status();
+    virtual char get_current_status();
+    virtual char get_previous_status();
     
     // Fonctions pour changer le statut
     virtual void Infect();
     virtual void Recover();
+    virtual void actualise_status();
     
     // Affichage
     virtual void Display_pos_indiv();

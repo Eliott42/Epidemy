@@ -35,9 +35,11 @@ public:
     virtual void Move();
 
     // Fonctions implémentées seulement dans les classes filles
-    virtual char get_Status() {return '0';}
+    virtual char get_current_status() {return '0';}
+    virtual char get_previous_status() {return '0';}
     virtual void Infect(){}
     virtual void Recover(){}
+    virtual void actualise_status(){}
     
     // Comparaison de position entre characters
     virtual bool Compare_pos_char(Character char2);
