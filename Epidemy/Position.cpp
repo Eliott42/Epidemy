@@ -29,21 +29,26 @@ Position::Position(int x, int y){
 
 // Setters
 
-void Position::set_Coord_x(int x){
+void Position::set_coord_x(int x){
     _x = x;
 }
 
-void Position::set_Coord_y(int y){
+void Position::set_coord_y(int y){
+    _y = y;
+}
+
+void Position::set_coord_xy(int x, int y){
+    _x = x;
     _y = y;
 }
 
 // Getters
 
-int Position::get_Coord_x(){
+int Position::get_coord_x(){
     return _x;
 }
 
-int Position::get_Coord_y(){
+int Position::get_coord_y(){
     return _y;
 }
 
@@ -53,7 +58,7 @@ int Position::get_Coord_y(){
 // Affichage
 
 void Position::Display_pos(){
-    std::cout << "(" << get_Coord_x() << "," << get_Coord_y() << ")\n";
+    std::cout << "(" << get_coord_x() << "," << get_coord_y() << ")\n";
 }
 
 //-----------------------------------------------------------------
@@ -61,7 +66,7 @@ void Position::Display_pos(){
 // Opérateur comparaison de 2 positions
 
 bool Position::operator==(Position pos2){
-    return ((_x == pos2.get_Coord_x()) && (_y == pos2.get_Coord_y()));
+    return ((_x == pos2.get_coord_x()) && (_y == pos2.get_coord_y()));
 }
 
 

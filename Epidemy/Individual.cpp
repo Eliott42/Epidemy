@@ -13,12 +13,15 @@
 
 // Constructeurs
 
-Individual::Individual(){
-    Character();
+Individual::Individual() : Character(){
     _current_status = 'S';
     _previous_status = 'S';
 }
 
+Individual::Individual(Position pos) : Character(pos){
+    _current_status = 'S';
+    _previous_status = 'S';
+}
 
 Individual::Individual(Position pos, char status) : Character(pos){
     _current_status = status;

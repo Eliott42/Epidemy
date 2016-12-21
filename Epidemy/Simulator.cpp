@@ -17,15 +17,19 @@
 #include "Position.h"
 
 int nb_char = 10;
+int bound_right = 100;
+int bound_up = 100;
 
 // Constructeur
 
 Simulator::Simulator(int n){
     _nb_cycles = n;
-    for (int i = 0; i < nb_char; i++){
-        _character_simules[i] = new Individual();
-    }
     srand((int)time(NULL)); // Initialise la seed de la fonction rand()
+    Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
+    for (int i = 0; i < nb_char; i++){
+        random_pos.set_coord_xy(rand()%bound_right,rand()%bound_up);
+        _character_simules[i] = new Individual(random_pos);
+    }
 }
 
 // Destructeur

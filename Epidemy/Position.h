@@ -21,12 +21,13 @@ public:
     Position(int x, int y);
     
     // Setters
-    void set_Coord_x(int x);
-    void set_Coord_y(int y);
+    void set_coord_x(int x);
+    void set_coord_y(int y);
+    void set_coord_xy(int x, int y);
     
     // Getters
-    int get_Coord_x();
-    int get_Coord_y();
+    int get_coord_x();
+    int get_coord_y();
     
     // Affichage
     void Display_pos();

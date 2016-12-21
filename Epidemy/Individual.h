@@ -21,6 +21,7 @@ private:
 public:
     // Constructeur
     Individual();
+    Individual(Position pos);
     Individual(Position pos, char status);
     
     // Setter

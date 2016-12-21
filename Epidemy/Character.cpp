@@ -36,26 +36,26 @@ Position Character::get_Position(){
 // Fonctions déplacement
 
 void Character::Move_left(){
-    if (_position.get_Coord_x() > 0){
-        _position.set_Coord_x(_position.get_Coord_x() - 1);
+    if (_position.get_coord_x() > 0){
+        _position.set_coord_x(_position.get_coord_x() - 1);
     }
 }
 
 void Character::Move_right(){
-    if (_position.get_Coord_x() < bound_right){
-        _position.set_Coord_x(_position.get_Coord_x() + 1);
+    if (_position.get_coord_x() < bound_right){
+        _position.set_coord_x(_position.get_coord_x() + 1);
     }
 }
 
 void Character::Move_down(){
-    if (_position.get_Coord_y() > 0){
-        _position.set_Coord_y(_position.get_Coord_y() - 1);
+    if (_position.get_coord_y() > 0){
+        _position.set_coord_y(_position.get_coord_y() - 1);
     }
 }
 
 void Character::Move_up(){
-    if (_position.get_Coord_y() < bound_up){
-        _position.set_Coord_y(_position.get_Coord_y() + 1);
+    if (_position.get_coord_y() < bound_up){
+        _position.set_coord_y(_position.get_coord_y() + 1);
     }
 }
 
@@ -82,18 +82,16 @@ void Character::Move(){
 
 //-----------------------------------------------------------------
 
-// Affichage
-
-void Character::Display_pos_char(){
-    std::cout << "(" << _position.get_Coord_x() << "," << _position.get_Coord_y() << ").\n" ;
-}
-
-//-----------------------------------------------------------------
-
 // Comparaison de position entre characters
 
 bool Character::Compare_pos_char(Character char2){
     return (_position == char2.get_Position());
 }
 
+//-----------------------------------------------------------------
 
+// Affichage
+
+void Character::Display_pos_char(){
+    std::cout << "(" << _position.get_coord_x() << "," << _position.get_coord_y() << ").\n" ;
+}
