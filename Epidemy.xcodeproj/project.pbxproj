@@ -12,6 +12,7 @@
 		554A5AA91DF5592C00699129 /* Individual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AA81DF5592C00699129 /* Individual.cpp */; };
 		554A5AAC1DF954F500699129 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AAB1DF954F500699129 /* Character.cpp */; };
 		55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FE93BD1E0421A0006A5454 /* Simulator.cpp */; };
+		55FE93C11E0BE436006A5454 /* libgtk-3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		554A5AAD1DF9550900699129 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		55FE93BD1E0421A0006A5454 /* Simulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulator.cpp; sourceTree = "<group>"; };
 		55FE93BF1E0421B0006A5454 /* Simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
+		55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgtk-3.0.dylib"; path = "../../../../../../opt/local/lib/libgtk-3.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55FE93C11E0BE436006A5454 /* libgtk-3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +56,7 @@
 		554A5A8F1DE6F04A00699129 = {
 			isa = PBXGroup;
 			children = (
+				55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */,
 				554A5A9A1DE6F04A00699129 /* Epidemy */,
 				554A5A991DE6F04A00699129 /* Products */,
 			);
@@ -231,6 +235,35 @@
 		554A5AA01DE6F04A00699129 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				"OTHER_CFLAGS[arch=*]" = (
+					"-D_REENTRANT",
+					"-I/opt/local/include/gtk-3.0",
+					"-I/opt/local/include/gio-unix-2.0/",
+					"-I/opt/local/include/cairo",
+					"-I/opt/local/include",
+					"-I/opt/local/include/pango-1.0",
+					"-I/opt/local/include/harfbuzz",
+					"-I/opt/local/include",
+					"-I/opt/local/include/pango-1.0",
+					"-I/opt/local/include/atk-1.0",
+					"-I/opt/local/include/cairo",
+					"-I/opt/local/include/pixman-1",
+					"-I/opt/local/include",
+					"-I/opt/local/include/freetype2",
+					"-I/opt/local/include",
+					"-I/opt/local/include/freetype2",
+					"-I/opt/local/include/libpng16",
+					"-I/opt/local/include",
+					"-I/opt/local/include/gdk-pixbuf-2.0",
+					"-I/opt/local/include/libpng16",
+					"-I/opt/local/include/glib-2.0",
+					"-I/opt/local/lib/glib-2.0/include",
+					"-I/opt/local/include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -238,6 +271,35 @@
 		554A5AA11DE6F04A00699129 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				"OTHER_CFLAGS[arch=*]" = (
+					"-D_REENTRANT",
+					"-I/opt/local/include/gtk-3.0",
+					"-I/opt/local/include/gio-unix-2.0/",
+					"-I/opt/local/include/cairo",
+					"-I/opt/local/include",
+					"-I/opt/local/include/pango-1.0",
+					"-I/opt/local/include/harfbuzz",
+					"-I/opt/local/include",
+					"-I/opt/local/include/pango-1.0",
+					"-I/opt/local/include/atk-1.0",
+					"-I/opt/local/include/cairo",
+					"-I/opt/local/include/pixman-1",
+					"-I/opt/local/include",
+					"-I/opt/local/include/freetype2",
+					"-I/opt/local/include",
+					"-I/opt/local/include/freetype2",
+					"-I/opt/local/include/libpng16",
+					"-I/opt/local/include",
+					"-I/opt/local/include/gdk-pixbuf-2.0",
+					"-I/opt/local/include/libpng16",
+					"-I/opt/local/include/glib-2.0",
+					"-I/opt/local/lib/glib-2.0/include",
+					"-I/opt/local/include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

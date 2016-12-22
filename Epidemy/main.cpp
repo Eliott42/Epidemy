@@ -12,8 +12,10 @@
 #include "Individual.h"
 #include "Character.h"
 #include "Simulator.h"
+#include <stdlib.h>
+#include <gtk/gtk.h>
 
-int main() {
+int main(int argc, char **argv) {
     
     /*
     Position pos(2,2);
@@ -35,6 +37,7 @@ int main() {
     sim.simulate_all();
     sim.Dislay_pos_simules();
     
+    gtk_init(&argc, &argv);
     
     return 0;
 }
