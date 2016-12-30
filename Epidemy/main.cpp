@@ -8,11 +8,13 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <stdlib.h>
+
 #include "Position.h"
 #include "Individual.h"
 #include "Character.h"
 #include "Simulator.h"
-#include <stdlib.h>
+#include "GraphicSimulator.h"
 
 
 int main(int argc, char **argv) {
@@ -30,13 +32,17 @@ int main(int argc, char **argv) {
     char1.Move();
     */
     
+    /*
     Simulator sim(10);
     
     sim.Dislay_pos_simules();
     //sim.simulate_one_cycle();
     sim.simulate_all();
     sim.Dislay_pos_simules();
+    */
     
+    GraphicSimulator simgraph(1024, 768, 10); // Creation de la simulation
+    return simgraph.loop(); // Loop the simulation, exit when the loop is done
     
     return 0;
 }

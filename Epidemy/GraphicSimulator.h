@@ -18,8 +18,10 @@ class GraphicSimulator{
     
 private:
     //----------Attributs concernant les graphismes--------------------------
-    SDL_Surface* _ecran; // écran utilisé pour le rendu
-    SDL_Event _event; // file d'attente pour les événement graphiques
+    SDL_Window* _fenetre = nullptr; // fenêtre pour le rendu
+    SDL_Renderer* _renderer = nullptr; // rendu
+    
+    SDL_Event _events; // file d'attente pour les événement graphiques
     bool quit; // le programme quitte quand le booléen est égal à TRUE
     // Les 3 attributs suivants sont utilisés pour le timing, et notamment les intervalles de temps qu'il va y avoir entre deux images de l'animation finale
     float _delta;
@@ -32,12 +34,12 @@ private:
     
     
 public:
-    GraphicSimulator(unsigned short largeur, unsigned short hauteur); //largeur de la fenêtre, hauteur de la fenêtre
+    GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n); //largeur de la fenêtre, hauteur de la fenêtre, nb de cycles dans la simulation
     ~GraphicSimulator(){}; // Destructeur par défaut
     
     int  loop(); // Boucle principale, qui va appeler les autres fonctions
     void handleEvents(); // gère les événements liés au clavier ou à la souris (fermeture de la fenêtre d'animation par exempe)
-    void update(); // met à jour les actions des characters
+    void simulate_one_cycle(); // fait faire les actions aux individus
     void render(); // Fait le rendu graphique des characters à l'écran
     
 };
