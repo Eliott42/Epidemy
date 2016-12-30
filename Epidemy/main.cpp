@@ -13,10 +13,7 @@
 #include "Character.h"
 #include "Simulator.h"
 #include <stdlib.h>
-#include <gtk/gtk.h>
 
-
-void OnDestroy(GtkWidget *pWidget, gpointer pData);
 
 int main(int argc, char **argv) {
     

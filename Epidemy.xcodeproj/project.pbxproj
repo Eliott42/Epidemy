@@ -13,6 +13,7 @@
 		554A5AAC1DF954F500699129 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AAB1DF954F500699129 /* Character.cpp */; };
 		5570E59A1E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5570E5991E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib */; };
 		5570E59C1E1695730055AC82 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5570E59B1E1695730055AC82 /* libSDL2-2.0.0.dylib */; };
+		5570E59F1E16A32E0055AC82 /* GraphicSimulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5570E59E1E16A32E0055AC82 /* GraphicSimulator.cpp */; };
 		55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FE93BD1E0421A0006A5454 /* Simulator.cpp */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,8 @@
 		554A5AAD1DF9550900699129 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		5570E5991E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_gfx-1.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_gfx/1.0.1/lib/libSDL2_gfx-1.0.0.dylib"; sourceTree = "<group>"; };
 		5570E59B1E1695730055AC82 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2/2.0.5/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		5570E59D1E16A2F30055AC82 /* GraphicSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicSimulator.h; sourceTree = "<group>"; };
+		5570E59E1E16A32E0055AC82 /* GraphicSimulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicSimulator.cpp; sourceTree = "<group>"; };
 		55FE93BD1E0421A0006A5454 /* Simulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulator.cpp; sourceTree = "<group>"; };
 		55FE93BF1E0421B0006A5454 /* Simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +89,8 @@
 				554A5AA81DF5592C00699129 /* Individual.cpp */,
 				55FE93BF1E0421B0006A5454 /* Simulator.h */,
 				55FE93BD1E0421A0006A5454 /* Simulator.cpp */,
+				5570E59D1E16A2F30055AC82 /* GraphicSimulator.h */,
+				5570E59E1E16A32E0055AC82 /* GraphicSimulator.cpp */,
 			);
 			path = Epidemy;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554A5AA31DE6F32300699129 /* Position.cpp in Sources */,
+				5570E59F1E16A32E0055AC82 /* GraphicSimulator.cpp in Sources */,
 				554A5A9C1DE6F04A00699129 /* main.cpp in Sources */,
 				554A5AA91DF5592C00699129 /* Individual.cpp in Sources */,
 				55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */,
