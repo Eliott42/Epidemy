@@ -15,6 +15,9 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 
+
+void OnDestroy(GtkWidget *pWidget, gpointer pData);
+
 int main(int argc, char **argv) {
     
     /*
@@ -29,7 +32,7 @@ int main(int argc, char **argv) {
     char1.Display_pos_char();
     char1.Move();
     */
-
+    
     Simulator sim(10);
     
     sim.Dislay_pos_simules();
@@ -37,7 +40,7 @@ int main(int argc, char **argv) {
     sim.simulate_all();
     sim.Dislay_pos_simules();
     
-    gtk_init(&argc, &argv);
     
     return 0;
 }
+

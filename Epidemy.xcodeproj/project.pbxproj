@@ -11,8 +11,9 @@
 		554A5AA31DE6F32300699129 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AA21DE6F32300699129 /* Position.cpp */; };
 		554A5AA91DF5592C00699129 /* Individual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AA81DF5592C00699129 /* Individual.cpp */; };
 		554A5AAC1DF954F500699129 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A5AAB1DF954F500699129 /* Character.cpp */; };
+		5570E59A1E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5570E5991E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib */; };
+		5570E59C1E1695730055AC82 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5570E59B1E1695730055AC82 /* libSDL2-2.0.0.dylib */; };
 		55FE93BE1E0421A0006A5454 /* Simulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FE93BD1E0421A0006A5454 /* Simulator.cpp */; };
-		55FE93C11E0BE436006A5454 /* libgtk-3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,9 +37,10 @@
 		554A5AAA1DF5593C00699129 /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
 		554A5AAB1DF954F500699129 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		554A5AAD1DF9550900699129 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		5570E5991E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_gfx-1.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2_gfx/1.0.1/lib/libSDL2_gfx-1.0.0.dylib"; sourceTree = "<group>"; };
+		5570E59B1E1695730055AC82 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2/2.0.5/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		55FE93BD1E0421A0006A5454 /* Simulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulator.cpp; sourceTree = "<group>"; };
 		55FE93BF1E0421B0006A5454 /* Simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
-		55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgtk-3.0.dylib"; path = "../../../../../../opt/local/lib/libgtk-3.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55FE93C11E0BE436006A5454 /* libgtk-3.0.dylib in Frameworks */,
+				5570E59C1E1695730055AC82 /* libSDL2-2.0.0.dylib in Frameworks */,
+				5570E59A1E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +59,8 @@
 		554A5A8F1DE6F04A00699129 = {
 			isa = PBXGroup;
 			children = (
-				55FE93C01E0BE436006A5454 /* libgtk-3.0.dylib */,
+				5570E59B1E1695730055AC82 /* libSDL2-2.0.0.dylib */,
+				5570E5991E16955A0055AC82 /* libSDL2_gfx-1.0.0.dylib */,
 				554A5A9A1DE6F04A00699129 /* Epidemy */,
 				554A5A991DE6F04A00699129 /* Products */,
 			);
@@ -238,31 +242,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/local/lib,
+					/usr/local/Cellar/sdl2_gfx/1.0.1/lib,
+					/usr/local/Cellar/sdl2/2.0.5/lib,
 				);
 				"OTHER_CFLAGS[arch=*]" = (
-					"-D_REENTRANT",
-					"-I/opt/local/include/gtk-3.0",
-					"-I/opt/local/include/gio-unix-2.0/",
-					"-I/opt/local/include/cairo",
-					"-I/opt/local/include",
-					"-I/opt/local/include/pango-1.0",
-					"-I/opt/local/include/harfbuzz",
-					"-I/opt/local/include",
-					"-I/opt/local/include/pango-1.0",
-					"-I/opt/local/include/atk-1.0",
-					"-I/opt/local/include/cairo",
-					"-I/opt/local/include/pixman-1",
-					"-I/opt/local/include",
-					"-I/opt/local/include/freetype2",
-					"-I/opt/local/include",
-					"-I/opt/local/include/freetype2",
-					"-I/opt/local/include/libpng16",
-					"-I/opt/local/include",
-					"-I/opt/local/include/gdk-pixbuf-2.0",
-					"-I/opt/local/include/libpng16",
-					"-I/opt/local/include/glib-2.0",
-					"-I/opt/local/lib/glib-2.0/include",
-					"-I/opt/local/include",
+					"-I/usr/local/Cellar/sdl2/2.0.5/include",
+					"-I/usr/local/Cellar/sdl2/2.0.5/include/SDL2",
+					"-I/usr/local/Cellar/sdl2_gfx/1.0.1/include/SDL2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -274,31 +260,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/local/lib,
+					/usr/local/Cellar/sdl2_gfx/1.0.1/lib,
+					/usr/local/Cellar/sdl2/2.0.5/lib,
 				);
 				"OTHER_CFLAGS[arch=*]" = (
-					"-D_REENTRANT",
-					"-I/opt/local/include/gtk-3.0",
-					"-I/opt/local/include/gio-unix-2.0/",
-					"-I/opt/local/include/cairo",
-					"-I/opt/local/include",
-					"-I/opt/local/include/pango-1.0",
-					"-I/opt/local/include/harfbuzz",
-					"-I/opt/local/include",
-					"-I/opt/local/include/pango-1.0",
-					"-I/opt/local/include/atk-1.0",
-					"-I/opt/local/include/cairo",
-					"-I/opt/local/include/pixman-1",
-					"-I/opt/local/include",
-					"-I/opt/local/include/freetype2",
-					"-I/opt/local/include",
-					"-I/opt/local/include/freetype2",
-					"-I/opt/local/include/libpng16",
-					"-I/opt/local/include",
-					"-I/opt/local/include/gdk-pixbuf-2.0",
-					"-I/opt/local/include/libpng16",
-					"-I/opt/local/include/glib-2.0",
-					"-I/opt/local/lib/glib-2.0/include",
-					"-I/opt/local/include",
+					"-I/usr/local/Cellar/sdl2/2.0.5/include",
+					"-I/usr/local/Cellar/sdl2/2.0.5/include/SDL2",
+					"-I/usr/local/Cellar/sdl2_gfx/1.0.1/include/SDL2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
