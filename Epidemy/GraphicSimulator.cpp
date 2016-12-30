@@ -25,6 +25,7 @@ int nb_char2 = 10;
 GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n)
 {
     //----------Attributs concernant les graphismes--------------------------
+    
     // Initialisation de l'interface graphique (image et temps)
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     
@@ -33,7 +34,7 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
                               largeur, hauteur, SDL_WINDOW_SHOWN);
     
     // Initialisation du rendu
-    _renderer = SDL_CreateRenderer(_fenetre, -1, 0);
+    _renderer = SDL_CreateRenderer(_fenetre, -1, SDL_RENDERER_ACCELERATED);
     
     // Initialisation du booléen pour que le programme ne quitte pas immédiatement
     quit = false;
@@ -44,6 +45,8 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
     _previous_time = 0.0f;
     
     //----------Attributs concernant la simulation--------------------------
+    
+    _count_cycle = 1; // On commence le compteur de cycles à 1
     _nb_cycles = n; // Initialisation du nb de cycles de la simulation
     srand((int)time(NULL)); // Initialise la seed de la fonction rand()
     
@@ -87,7 +90,8 @@ int GraphicSimulator::loop()
         render();
         
         // SDL_Flip(_fenetre); // Affichage de la simulation
-        SDL_Delay(10); // pause pour voir le rendu
+        SDL_RenderPresent(_renderer);
+ //XXX       SDL_Delay(10); // pause pour voir le rendu
     }
     
     return 0; // Valeur renvoyée dans main() : 0 indique que l'on quitte le programme
@@ -117,40 +121,47 @@ void GraphicSimulator::simulate_one_cycle()
     double proba_stay = 0.2; // Probabilité de rester sur place
     double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
     double proba_recover = 0.2; // Probabilité de guérir
+    std::cout << "cycle " << _count_cycle << "\n";
     
-    // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place
-    for (int i = 0; i < nb_char2; i++){
-        double p = ((double)rand())/RAND_MAX;
-        if (p >= proba_stay){
-            _character_simules[i]->Move();
+    // Les actions sont effectuées si l'on a pas dépassé le nbre max de tours de simulation
+    if (_count_cycle < _nb_cycles)
+    {
+        // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place
+        for (int i = 0; i < nb_char2; i++){
+            double p = ((double)rand())/RAND_MAX;
+            if (p >= proba_stay){
+                _character_simules[i]->Move();
+            }
+            _character_simules[i]->Display_info();
         }
-        _character_simules[i]->Display_info();
-    }
     
-    // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
-    for (int i = 0; i < nb_char2; i++){
-        for (int j = 0; j < nb_char2; j++){
-            if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
-                // Probabilité d'être infecté si l'on est sain (et non rétabli)
-                if (_character_simules[j]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
-                    _character_simules[i] -> Infect();
+        // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
+        for (int i = 0; i < nb_char2; i++){
+            for (int j = 0; j < nb_char2; j++){
+                if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
+                    // Probabilité d'être infecté si l'on est sain (et non rétabli)
+                    if (_character_simules[j]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
+                        _character_simules[i] -> Infect();
+                    }
                 }
             }
         }
-    }
     
-    // À la fin du tour, chaque individu infecté à une chance de guérir
-    for (int i = 0; i < nb_char2; i++){
-        if (_character_simules[i] -> get_current_status() == 'I'){
-            if (((double)rand())/RAND_MAX <= proba_recover){
-                _character_simules[i] -> Recover();
+        // À la fin du tour, chaque individu infecté à une chance de guérir
+        for (int i = 0; i < nb_char2; i++){
+            if (_character_simules[i] -> get_current_status() == 'I'){
+                if (((double)rand())/RAND_MAX <= proba_recover){
+                    _character_simules[i] -> Recover();
+                }
             }
         }
-    }
     
-    // À la fin du tour, on atualise les statuts des individus
-    for (int i = 0; i < nb_char2; i++){
-        _character_simules[i] -> actualise_status();
+        // À la fin du tour, on atualise les statuts des individus
+        for (int i = 0; i < nb_char2; i++){
+            _character_simules[i] -> actualise_status();
+        }
+        
+    _count_cycle = _count_cycle + 1;
     }
 }
 
@@ -159,6 +170,7 @@ void GraphicSimulator::simulate_one_cycle()
 
 void GraphicSimulator::render() //
 {
+    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255); // choix de la couleur du rendu (blanc)
     // Nettoyage de l'écran avec la couleur choisie
     SDL_RenderClear(_renderer);
     // Définition du rayon du cercle qui va représenter l'individu
@@ -167,8 +179,10 @@ void GraphicSimulator::render() //
     // Nous traçons un cercle pour chaque individu sur la grille
     for (int i = 0; i < nb_char2; i++)
     {
-        filledCircleColor(_renderer, _character_simules[i] -> get_Position().get_coord_x(),
-                          _character_simules[i] -> get_Position().get_coord_y(),
-                          circleR, 0xFF0000FF);
+        Sint16 xc=_character_simules[i] -> get_Position().get_coord_x();
+        Sint16 yc=_character_simules[i] -> get_Position().get_coord_y();
+        Sint32 color=0xFF0000FF;
+        std::cout << "xc: " << xc << " et yc: " << yc << "\n";
+        filledCircleColor(_renderer, 7*xc,7*yc,circleR, color);
     }
 }

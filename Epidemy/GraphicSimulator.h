@@ -18,6 +18,7 @@ class GraphicSimulator{
     
 private:
     //----------Attributs concernant les graphismes--------------------------
+    
     SDL_Window* _fenetre = nullptr; // fenêtre pour le rendu
     SDL_Renderer* _renderer = nullptr; // rendu
     
@@ -29,7 +30,9 @@ private:
     float _previous_time; // temps précédent
     
     //----------Attributs concernant la simulation--------------------------
+    
     int _nb_cycles;
+    int _count_cycle;
     Character* _character_simules[10]; // nombre de characters simulés
     
     
