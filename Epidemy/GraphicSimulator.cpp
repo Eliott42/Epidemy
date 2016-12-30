@@ -91,7 +91,7 @@ int GraphicSimulator::loop()
         
         // SDL_Flip(_fenetre); // Affichage de la simulation
         SDL_RenderPresent(_renderer);
- //XXX       SDL_Delay(10); // pause pour voir le rendu
+        SDL_Delay(500); // pause pour voir le rendu
     }
     
     return 0; // Valeur renvoyée dans main() : 0 indique que l'on quitte le programme
@@ -181,8 +181,13 @@ void GraphicSimulator::render() //
     {
         Sint16 xc=_character_simules[i] -> get_Position().get_coord_x();
         Sint16 yc=_character_simules[i] -> get_Position().get_coord_y();
-        Sint32 color=0xFF0000FF;
-        std::cout << "xc: " << xc << " et yc: " << yc << "\n";
+        Sint32 color=0xFF00FF00;
+        
+        if (_character_simules[i] -> get_current_status() == 'I'){
+            color=0xFF0000FF;
+        }
+        
+        std::cout << "xc: " << xc << ", yc: " << yc << " et " << color << ", " << _character_simules[i] -> get_current_status() << "\n";
         filledCircleColor(_renderer, 7*xc,7*yc,circleR, color);
     }
 }
