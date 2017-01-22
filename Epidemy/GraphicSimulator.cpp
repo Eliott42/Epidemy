@@ -54,7 +54,7 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
     Character::bound_up = 100;
     
     Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
-    double proba_infect_init = 0.4; // Probabilité que l'individu soit infecté dès le début
+    double proba_infect_init = 0.6; // Probabilité que l'individu soit infecté dès le début
     
     for (int i = 0; i < nb_char2; i++){
         // Génération d'une position aléatoire
@@ -120,7 +120,7 @@ void GraphicSimulator::simulate_one_cycle()
 {
     double proba_stay = 0.2; // Probabilité de rester sur place
     double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
-    double proba_recover = 0.2; // Probabilité de guérir
+    double proba_recover = 0.05; // Probabilité de guérir
     std::cout << "cycle " << _count_cycle << "\n";
     
     // Les actions sont effectuées si l'on a pas dépassé le nbre max de tours de simulation
@@ -175,6 +175,12 @@ void GraphicSimulator::render() //
     SDL_RenderClear(_renderer);
     // Définition du rayon du cercle qui va représenter l'individu
     Sint16 circleR = 10;
+    
+    // Nous traçons la grille
+    for (int i = 0; i < 101; i++){
+        vlineColor(_renderer, 7*i, 0, 7*100, 0xFFFFF0FF);
+        hlineColor(_renderer, 0, 7*100, 7*i, 0xFFFFF0FF);
+    }
     
     // Nous traçons un cercle pour chaque individu sur la grille
     for (int i = 0; i < nb_char2; i++)
