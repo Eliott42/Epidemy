@@ -14,6 +14,7 @@
 #include <SDL2_gfxPrimitives.h>
 
 #include "GraphicSimulator.h"
+#include "Simulator.h"
 #include "Character.h"
 #include "Individual.h"
 #include "Position.h"
@@ -47,25 +48,7 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
     //----------Attributs concernant la simulation--------------------------
     
     _count_cycle = 1; // On commence le compteur de cycles à 1
-    _nb_cycles = n; // Initialisation du nb de cycles de la simulation
-    srand((int)time(NULL)); // Initialise la seed de la fonction rand()
-    
-    Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
-    Character::bound_up = 100;
-    
-    Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
-    double proba_infect_init = 0.6; // Probabilité que l'individu soit infecté dès le début
-    
-    for (int i = 0; i < nb_char2; i++){
-        // Génération d'une position aléatoire
-        random_pos.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
-        // Création de l'individu à cette position aléatoire
-        _character_simules[i] = new Individual(random_pos);
-        // L'individu a une probabilité d'être infecté dès le début
-        if (((double)rand())/RAND_MAX <= proba_infect_init){
-            _character_simules[i] -> Infect();
-        }
-    }
+    _sim = new Simulator(n);
 }
 
 //-----------------------------------------------------------------
@@ -74,7 +57,7 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
 // Méthodes
 
 
-// Boucle qui, à chaque cycle de la simulation, appelle les fonctions qui ont se déplacer et intéragir les individus, puis les fonctions qui permmettent le rendu graphique
+// Boucle qui, à chaque cycle de la simulation, appelle les fonctions qui font se déplacer et intéragir les individus, puis les fonctions qui permettent le rendu graphique
 
 int GraphicSimulator::loop()
 {
@@ -86,7 +69,7 @@ int GraphicSimulator::loop()
         _previous_time = _current_time;
         
         handleEvents(); // Start calling each needed function, each is self explanatory
-        simulate_one_cycle();
+        _sim -> simulate_one_cycle();
         render();
         
         // SDL_Flip(_fenetre); // Affichage de la simulation
@@ -113,59 +96,6 @@ void GraphicSimulator::handleEvents()
 }
 
 
-
-// Fonction qui lance un tour de la simulation : fait se déplacer (ou non) l'ensemble des individus, puis permet l'infection (ou non) des individus sur la même position
-
-void GraphicSimulator::simulate_one_cycle()
-{
-    double proba_stay = 0.2; // Probabilité de rester sur place
-    double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
-    double proba_recover = 0.05; // Probabilité de guérir
-    std::cout << "cycle " << _count_cycle << "\n";
-    
-    // Les actions sont effectuées si l'on a pas dépassé le nbre max de tours de simulation
-    if (_count_cycle < _nb_cycles)
-    {
-        // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place
-        for (int i = 0; i < nb_char2; i++){
-            double p = ((double)rand())/RAND_MAX;
-            if (p >= proba_stay){
-                _character_simules[i]->Move();
-            }
-            _character_simules[i]->Display_info();
-        }
-    
-        // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
-        for (int i = 0; i < nb_char2; i++){
-            for (int j = 0; j < nb_char2; j++){
-                if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
-                    // Probabilité d'être infecté si l'on est sain (et non rétabli)
-                    if (_character_simules[j]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
-                        _character_simules[i] -> Infect();
-                    }
-                }
-            }
-        }
-    
-        // À la fin du tour, chaque individu infecté à une chance de guérir
-        for (int i = 0; i < nb_char2; i++){
-            if (_character_simules[i] -> get_current_status() == 'I'){
-                if (((double)rand())/RAND_MAX <= proba_recover){
-                    _character_simules[i] -> Recover();
-                }
-            }
-        }
-    
-        // À la fin du tour, on atualise les statuts des individus
-        for (int i = 0; i < nb_char2; i++){
-            _character_simules[i] -> actualise_status();
-        }
-        
-    _count_cycle = _count_cycle + 1;
-    }
-}
-
-
 // fonction permettant de faire le rendu graphique
 
 void GraphicSimulator::render() //
@@ -185,15 +115,15 @@ void GraphicSimulator::render() //
     // Nous traçons un cercle pour chaque individu sur la grille
     for (int i = 0; i < nb_char2; i++)
     {
-        Sint16 xc=_character_simules[i] -> get_Position().get_coord_x();
-        Sint16 yc=_character_simules[i] -> get_Position().get_coord_y();
+        Sint16 xc = _sim -> get_Character(i) -> get_Position().get_coord_x();
+        Sint16 yc = _sim -> get_Character(i) -> get_Position().get_coord_y();
         Sint32 color=0xFF00FF00;
         
-        if (_character_simules[i] -> get_current_status() == 'I'){
+        if (_sim -> get_Character(i) -> get_current_status() == 'I'){
             color=0xFF0000FF;
         }
         
-        std::cout << "xc: " << xc << ", yc: " << yc << " et " << color << ", " << _character_simules[i] -> get_current_status() << "\n";
+        std::cout << "xc: " << xc << ", yc: " << yc << " et " << color << ", " << _sim -> get_Character(i) -> get_current_status() << "\n";
         filledCircleColor(_renderer, 7*xc,7*yc,circleR, color);
     }
 }

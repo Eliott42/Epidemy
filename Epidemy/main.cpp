@@ -32,17 +32,17 @@ int main(int argc, char **argv) {
     char1.Move();
     */
     
-    
+    /*
     Simulator sim(10);
     
     sim.Dislay_pos_simules();
     sim.simulate_all();
     sim.Dislay_pos_simules();
+    */
     
-    /*
     GraphicSimulator simgraph(1024, 768, 1000); // Creation de la simulation
     return simgraph.loop(); // Loop the simulation, exit when the loop is done
-    */
+
     
     return 0;
 }

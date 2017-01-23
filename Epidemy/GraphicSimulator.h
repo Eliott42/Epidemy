@@ -10,7 +10,9 @@
 #define GraphicSimulator_h
 
 #include "Position.h"
+#include "Simulator.h"
 #include "Character.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2_gfxPrimitives.h>
 
@@ -31,10 +33,8 @@ private:
     
     //----------Attributs concernant la simulation--------------------------
     
-    int _nb_cycles;
-    int _count_cycle;
-    Character* _character_simules[10]; // nombre de characters simulés
-    
+    Simulator* _sim; // Simulateur qui va contenir tous les characters et les méthodes de simulation
+    int _count_cycle; // Compteur de cycles, que l'on incrémente à chaque tour et que l'on compare avec le nb max de cycles, pour savoir quand arreter la simulation
     
 public:
     GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n); //largeur de la fenêtre, hauteur de la fenêtre, nb de cycles dans la simulation
@@ -42,7 +42,6 @@ public:
     
     int  loop(); // Boucle principale, qui va appeler les autres fonctions
     void handleEvents(); // gère les événements liés au clavier ou à la souris (fermeture de la fenêtre d'animation par exempe)
-    void simulate_one_cycle(); // fait faire les actions aux individus
     void render(); // Fait le rendu graphique des characters à l'écran
     
 };

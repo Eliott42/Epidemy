@@ -50,7 +50,16 @@ Simulator::~Simulator(){
 
 //-----------------------------------------------------------------
 
-// Méthodes
+// Getter pour les characters
+
+Character* Simulator::get_Character(int i){
+    return _character_simules[i];
+}
+
+
+//-----------------------------------------------------------------
+
+// Autres Méthodes
 
 // Fonction qui lance un tour de la simulation : fait se déplacer (ou non) l'ensemble des individus, puis permet l'infection (ou non) des individus sur la même position
 
