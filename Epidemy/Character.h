@@ -31,6 +31,7 @@ public:
     virtual void Move_up();
     virtual void Move_down();
     virtual void Move();
+    virtual void Move_to_destination();
 
     // Fonctions implémentées seulement dans les classes filles
     virtual char get_current_status() {return '0';}

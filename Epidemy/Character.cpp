@@ -86,6 +86,32 @@ void Character::Move(){
     }
 }
 
+// Fonction permettant de se déplacer jusqu'à la destination initiale. Le principe est le suivant : Le character se déplace d'abord horizontalement sur la grille, jusqu'à atteindre la colonne de sa destination. Ensuite, il se déplace verticalement.
+
+void Character::Move_to_destination(){
+    // On teste d'abord si le character est arrivé à destination. Si ce n'est pas le cas, il se déplace.
+    if (_arrived == 0){
+        if (_position.get_coord_x() < _destination.get_coord_x()){
+            Move_right();
+        }
+        else{
+            if (_position.get_coord_x() > _destination.get_coord_x()){
+                Move_left();
+            }
+            else {
+                if (_position.get_coord_y() < _destination.get_coord_y()){
+                    Move_up();
+                }
+                else{
+                    if (_position.get_coord_y() > _destination.get_coord_y()){
+                        Move_down();
+                    }
+                }
+            }
+        }
+    }
+}
+
 //-----------------------------------------------------------------
 
 // Comparaison de position entre characters
