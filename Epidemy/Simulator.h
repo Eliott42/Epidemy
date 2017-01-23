@@ -31,6 +31,8 @@ public:
     
     // Fonction affichage de la position de tous les characters simulés.
     void Dislay_pos_simules();
+    // Fonction d'affichage de statistiques au i-ème tour sur la progression de l'épidémie.
+    void Dislay_statistics(int i);
     
 };
 

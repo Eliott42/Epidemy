@@ -26,7 +26,7 @@ Simulator::Simulator(int n){
     Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
     Character::bound_up = 100;
     Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
-    double proba_infect_init = 0.4; // Probabilité que l'individu soit infecté dès le début
+    double proba_infect_init = 0.6; // Probabilité que l'individu soit infecté dès le début
     
     for (int i = 0; i < nb_char; i++){
         // Génération d'une position aléatoire
@@ -57,9 +57,9 @@ Simulator::~Simulator(){
 void Simulator::simulate_one_cycle(){
     double proba_stay = 0.2; // Probabilité de rester sur place
     double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
-    double proba_recover = 0.2; // Probabilité de guérir
+    double proba_recover = 0.1; // Probabilité de guérir
     
-    // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place
+    // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place.
     for (int i = 0; i < nb_char; i++){
         std::cout << i << " ,";
         double p = ((double)rand())/RAND_MAX;
@@ -70,7 +70,7 @@ void Simulator::simulate_one_cycle(){
         _character_simules[i]->Display_info();
     }
     
-    // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres
+    // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres.
     for (int i = 0; i < nb_char; i++){
         for (int j = 0; j < nb_char; j++){
             if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
@@ -91,7 +91,10 @@ void Simulator::simulate_one_cycle(){
         }
     }
     
-    // À la fin du tour, on atualis les statuts des individus
+    // Affichage des statistiques
+    Dislay_statistics(0);
+    
+    // À la fin du tour, on atualise les statuts des individus
     for (int i = 0; i < nb_char; i++){
         _character_simules[i] -> actualise_status();
     }
@@ -113,4 +116,37 @@ void Simulator::Dislay_pos_simules(){
     for (int i = 0; i < nb_char; i++){
         _character_simules[i] -> Display_info();
     }
+}
+
+// Fonction permettant d'afficher des statistiques au i-ème tour sur la progression de l'épidémie
+
+void Simulator::Dislay_statistics(int i){
+    int count_infect = 0; // Compteur d'invidus infectés au total
+    int count_recover = 0; // Compteur d'individus guéris au total
+    int count_infect_previously = 0; // Compteur d'invidus qui étaient infectés au tour d'avant
+    int count_recover_previously = 0; // Compteur d'individus étaient guéris au tour d'avant
+    
+    // On comptabilise le nombre total d'individus infectés/guéris/sains
+    for (int i = 0; i < nb_char; i++){
+        if (_character_simules[i] -> get_current_status() == 'I'){
+            count_infect ++;
+        }
+        else if (_character_simules[i] -> get_current_status() == 'R'){
+            count_recover ++;
+        }
+    }
+    // On comptabilise ceux qui ont été infecté ce tour-ci ou qui ont guéri
+    for (int i = 0; i < nb_char; i++){
+        if (_character_simules[i] -> get_previous_status() == 'I'){
+            count_infect_previously ++;
+        }
+        else if (_character_simules[i] -> get_previous_status() == 'R'){
+            count_recover_previously ++;
+        }
+    }
+    
+    std::cout << "Au tour " << i << ":\n";
+    std::cout << "nouveaux infectés :" << count_infect - count_infect_previously << "\n";
+    std::cout << "nombre de guérisons :" << count_recover - count_recover_previously << "\n";
+    std::cout << "Proportions :" << 100*(double)(nb_char - count_infect - count_recover)/nb_char << "% sains, " << 100*(double)count_infect/nb_char << "% infectés, " << 100*(double)count_recover/nb_char << "% guéris \n";
 }
