@@ -3,7 +3,6 @@
 //  Epidemy
 //
 //  Created by Eliott Jouhaud on 05/12/2016.
-//  Copyright © 2016 Eliott Jouhaud. All rights reserved.
 //
 
 #ifndef Individual_h

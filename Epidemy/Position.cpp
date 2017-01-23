@@ -3,7 +3,6 @@
 //  Epidemy
 //
 //  Created by Eliott Jouhaud on 24/11/2016.
-//  Copyright © 2016 Eliott Jouhaud. All rights reserved.
 //
 
 #include <stdio.h>
@@ -68,7 +67,3 @@ void Position::Display_pos(){
 bool Position::operator==(Position pos2){
     return ((_x == pos2.get_coord_x()) && (_y == pos2.get_coord_y()));
 }
-
-
-
-

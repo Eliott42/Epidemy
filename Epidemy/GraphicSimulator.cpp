@@ -3,7 +3,6 @@
 //  Epidemy
 //
 //  Created by Eliott Jouhaud on 30/12/2016.
-//  Copyright © 2016 Eliott Jouhaud. All rights reserved.
 //
 
 #include <stdio.h>
@@ -126,8 +125,8 @@ void GraphicSimulator::render() //
         if (_sim -> get_Character(i) -> get_current_status() == 'I'){
             color=0xFF0000FF;
         }
-        
-        std::cout << "xc: " << xc << ", yc: " << yc << " et " << color << ", " << _sim -> get_Character(i) -> get_current_status() << "\n";
+        //Débuggage
+        //std::cout << "xc: " << xc << ", yc: " << yc << " et " << color << ", " << _sim -> get_Character(i) -> get_current_status() << "\n";
         filledCircleColor(_renderer, 7*xc,7*yc,circleR, color);
     }
 }
