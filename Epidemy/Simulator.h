@@ -24,8 +24,9 @@ public:
     // Destructeur
     ~Simulator();
     
-    // Getter pour les characters
+    // Getters
     Character* get_Character(int i);
+    int get_nb_cycles();
     
     // Fonction pour lancer un tour de la simulation
     void simulate_one_cycle();

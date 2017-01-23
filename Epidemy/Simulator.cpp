@@ -50,10 +50,16 @@ Simulator::~Simulator(){
 
 //-----------------------------------------------------------------
 
-// Getter pour les characters
+// Getters
 
+// Pour les characters
 Character* Simulator::get_Character(int i){
     return _character_simules[i];
+}
+
+// Pour le nombre de cycles
+int Simulator::get_nb_cycles(){
+    return _nb_cycles;
 }
 
 

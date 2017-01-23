@@ -61,20 +61,24 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
 
 int GraphicSimulator::loop()
 {
-    while (!quit) // While quit is false
+    int n = _sim -> get_nb_cycles();
+    
+    while (!quit && (_count_cycle < n)) // While quit is false
     {
         // Nous mettons à jour les temps, en déterminant quel est l'intervalle entre deux rendus
         _current_time = (float)SDL_GetTicks();
         _delta = (_current_time - _previous_time) / 1000.0f;
         _previous_time = _current_time;
         
-        handleEvents(); // Start calling each needed function, each is self explanatory
+        handleEvents(); // Fonction gérant les événements liées à la souris ou clavier
         _sim -> simulate_one_cycle();
         render();
         
-        // SDL_Flip(_fenetre); // Affichage de la simulation
+        // Affichage de la simulation
         SDL_RenderPresent(_renderer);
         SDL_Delay(500); // pause pour voir le rendu
+        
+        _count_cycle++ ;
     }
     
     return 0; // Valeur renvoyée dans main() : 0 indique que l'on quitte le programme
