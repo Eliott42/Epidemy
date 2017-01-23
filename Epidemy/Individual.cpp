@@ -17,12 +17,12 @@ Individual::Individual() : Character(){
     _previous_status = 'S';
 }
 
-Individual::Individual(Position pos) : Character(pos){
+Individual::Individual(Position pos, Position des) : Character(pos, des){
     _current_status = 'S';
     _previous_status = 'S';
 }
 
-Individual::Individual(Position pos, char status) : Character(pos){
+Individual::Individual(Position pos, Position des, char status) : Character(pos, des){
     _current_status = status;
     _previous_status = status;
 }

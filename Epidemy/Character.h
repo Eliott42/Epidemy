@@ -13,12 +13,14 @@
 class Character{
 
 protected:
-    Position _position;
+    Position _position; // la position actuelle du character
+    Position _destination; // la position que souhaite atteindre le character
+    bool _arrived; // booléen qui indique si l'individu est arrivé, oui ou non, à destination
     
 public:
     // Constructeur
     Character();
-    Character(Position pos);
+    Character(Position pos, Position des);
     
     // Getter
     virtual Position get_Position();

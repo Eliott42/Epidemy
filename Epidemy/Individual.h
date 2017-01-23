@@ -20,8 +20,8 @@ private:
 public:
     // Constructeur
     Individual();
-    Individual(Position pos);
-    Individual(Position pos, char status);
+    Individual(Position pos, Position des);
+    Individual(Position pos, Position des, char status);
     
     // Setter
     virtual void set_current_status(char status);

@@ -17,11 +17,18 @@ int Character::bound_up = 100;
 // Constructeurs
 
 Character::Character(){
-    _position = Position();
+    _position = Position(); // par défaut le character est en (0,0)
+    _destination = Position(); // Sa destination est (0,0)
+    _arrived = 1;
 }
 
-Character::Character(Position pos){
+Character::Character(Position pos, Position des){
     _position = pos;
+    _destination = des;
+    if (pos == des){
+        _arrived = 1;
+    }
+    else _arrived = 0;
 }
 
 // Getter

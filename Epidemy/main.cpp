@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     sim.Dislay_pos_simules();
     */
     
-    GraphicSimulator simgraph(1024, 768, 10); // Creation de la simulation
+    GraphicSimulator simgraph(1024, 768, 100); // Creation de la simulation
     return simgraph.loop(); // Loop the simulation, exit when the loop is done
 
     

@@ -25,13 +25,15 @@ Simulator::Simulator(int n){
     Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
     Character::bound_up = 100;
     Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
+    Position random_des; // De même on définit une destination aléatoire pour cahque individu
     double proba_infect_init = 0.6; // Probabilité que l'individu soit infecté dès le début
     
     for (int i = 0; i < nb_char; i++){
-        // Génération d'une position aléatoire
+        // Génération d'une position et d'une destination aléatoire
         random_pos.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
+        random_des.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
         // Création de l'individu à cette position aléatoire
-        _character_simules[i] = new Individual(random_pos);
+        _character_simules[i] = new Individual(random_pos, random_des);
         // L'individu a une probabilité d'être infecté dès le début
         if (((double)rand())/RAND_MAX <= proba_infect_init){
             _character_simules[i] -> Infect();
