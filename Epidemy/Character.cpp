@@ -31,10 +31,19 @@ Character::Character(Position pos, Position des){
     else _arrived = 0;
 }
 
+//-----------------------------------------------------------------
+
 // Getter
 
 Position Character::get_Position(){
     return _position;
+}
+
+// Setter
+
+void Character::set_Destination(int x, int y){
+    _destination.set_coord_x(x);
+    _destination.set_coord_y(y);
 }
 
 //-----------------------------------------------------------------

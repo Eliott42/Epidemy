@@ -25,6 +25,9 @@ public:
     // Getter
     virtual Position get_Position();
     
+    // Setter
+    virtual void set_Destination(int x, int y);
+    
     // Fonctions déplacement
     virtual void Move_left();
     virtual void Move_right();
