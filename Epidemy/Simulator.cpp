@@ -81,9 +81,16 @@ void Simulator::simulate_one_cycle(){
         double p = ((double)rand())/RAND_MAX;
         std::cout << p << " ,";
         if (p >= proba_stay){
-            _character_simules[i]->Move();
+            _character_simules[i]->Move_to_destination();
         }
         _character_simules[i]->Display_info();
+    }
+    
+    // On tire uen nouvelle destination aléatoire pour les individus qui sont arrivés à destination
+    for (int i = 0; i < nb_char; i++){
+        if (_character_simules[i]->is_Arrived()) {
+            _character_simules[i]->set_Destination(rand()%Character::bound_right, rand()%Character::bound_up);
+        }
     }
     
     // On compare la position des individus : un individu à côte d'un autre a une probabilité d'être infecté si l'autre est infecté. Il faut donc 2 boucles pour comparer tous les individus avec tous les autres.

@@ -44,6 +44,10 @@ Position Character::get_Position(){
 void Character::set_Destination(int x, int y){
     _destination.set_coord_x(x);
     _destination.set_coord_y(y);
+    if (_position == _destination){
+        _arrived = 1;
+    }
+    else _arrived = 0;
 }
 
 //-----------------------------------------------------------------
