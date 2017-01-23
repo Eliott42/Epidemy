@@ -110,6 +110,16 @@ void Character::Move_to_destination(){
             }
         }
     }
+    // À la fin du déplacement, on regarde si le character est arrivé. On met à jour en conséquence le booléen "arrived"
+    if (_position == _destination){
+        _arrived = 1;
+    }
+}
+
+// Fonction retournant si le character est arrivé ou non
+
+bool Character::is_Arrived(){
+    return _arrived;
 }
 
 //-----------------------------------------------------------------

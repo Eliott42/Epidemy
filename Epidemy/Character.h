@@ -32,6 +32,7 @@ public:
     virtual void Move_down();
     virtual void Move();
     virtual void Move_to_destination();
+    virtual bool is_Arrived(); // Le character est-il arrivé à destination ?
 
     // Fonctions implémentées seulement dans les classes filles
     virtual char get_current_status() {return '0';}
