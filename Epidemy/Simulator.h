@@ -8,6 +8,8 @@
 #ifndef Simulator_h
 #define Simulator_h
 
+#include <vector>
+
 #include "Position.h"
 #include "Character.h"
 
@@ -16,7 +18,7 @@ class Simulator{
 private:
     int _nb_cycles; // nombre de tours de la simulation
     int _nb_char; // nombre de characters simulés
-    Character* _character_simules[100]; // tableaux des characters simulés
+    std::vector<Character*> _character_simules; // tableaux des characters simulés
     
 public:
     // Constructeur
