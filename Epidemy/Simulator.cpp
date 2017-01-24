@@ -19,8 +19,10 @@ int nb_char = 100;
 
 // Constructeur
 
-Simulator::Simulator(int n){
+Simulator::Simulator(int n, int m){
     _nb_cycles = n; // Initialisation du nb de cycles de la simulation
+    _nb_char = m; // Initialisation du nb de characters simulés
+    
     srand((int)time(NULL)); // Initialise la seed de la fonction rand()
     Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
     Character::bound_up = 100;

@@ -22,7 +22,7 @@ int nb_char2 = 100;
 
 // Constructeur
 
-GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n)
+GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n, int m)
 {
     //----------Attributs concernant les graphismes--------------------------
     
@@ -47,7 +47,7 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
     //----------Attributs concernant la simulation--------------------------
     
     _count_cycle = 1; // On commence le compteur de cycles à 1
-    _sim = new Simulator(n);
+    _sim = new Simulator(n,m);
 }
 
 //-----------------------------------------------------------------

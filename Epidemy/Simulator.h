@@ -14,12 +14,13 @@
 class Simulator{
     
 private:
-    int _nb_cycles;
-    Character* _character_simules[100]; // nombre de characters simulés
+    int _nb_cycles; // nombre de tours de la simulation
+    int _nb_char; // nombre de characters simulés
+    Character* _character_simules[100]; // tableaux des characters simulés
     
 public:
     // Constructeur
-    Simulator(int n);
+    Simulator(int n, int m);
     // Destructeur
     ~Simulator();
     
