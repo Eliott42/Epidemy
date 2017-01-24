@@ -18,7 +18,7 @@
 #include "Individual.h"
 #include "Position.h"
 
-int nb_char2 = 10;
+int nb_char2 = 100;
 
 // Constructeur
 
@@ -107,7 +107,7 @@ void GraphicSimulator::render() //
     // Nettoyage de l'écran avec la couleur choisie
     SDL_RenderClear(_renderer);
     // Définition du rayon du cercle qui va représenter l'individu
-    Sint16 circleR = 10;
+    Sint16 circleR = 5;
     
     // Nous traçons la grille
     for (int i = 0; i < 101; i++){

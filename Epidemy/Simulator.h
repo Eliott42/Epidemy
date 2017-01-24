@@ -15,7 +15,7 @@ class Simulator{
     
 private:
     int _nb_cycles;
-    Character* _character_simules[10]; // nombre de characters simulés
+    Character* _character_simules[100]; // nombre de characters simulés
     
 public:
     // Constructeur

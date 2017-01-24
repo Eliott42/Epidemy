@@ -15,7 +15,7 @@
 #include "Individual.h"
 #include "Position.h"
 
-int nb_char = 10;
+int nb_char = 100;
 
 // Constructeur
 
@@ -32,11 +32,14 @@ Simulator::Simulator(int n){
         // Génération d'une position et d'une destination aléatoire
         random_pos.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
         random_des.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
+        
         // Création de l'individu à cette position aléatoire
         _character_simules[i] = new Individual(random_pos, random_des);
+        
         // L'individu a une probabilité d'être infecté dès le début
         if (((double)rand())/RAND_MAX <= proba_infect_init){
             _character_simules[i] -> Infect();
+            _character_simules[i] -> actualise_status();
         }
     }
 }
@@ -71,25 +74,23 @@ int Simulator::get_nb_cycles(){
 // Fonction qui lance un tour de la simulation : fait se déplacer (ou non) l'ensemble des individus, puis permet l'infection (ou non) des individus sur la même position
 
 void Simulator::simulate_one_cycle(){
-    double proba_stay = 0.2; // Probabilité de rester sur place
-    double proba_infect = 0.4; // Probabilité d'être infecté quand on est en contact avec un infecté
-    double proba_recover = 0.1; // Probabilité de guérir
+    double proba_stay = 0.5; // Probabilité de rester sur place
+    double proba_infect = 1; // Probabilité d'être infecté quand on est en contact avec un infecté
+    double proba_recover = 0.03; // Probabilité de guérir
     
     // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place.
     for (int i = 0; i < nb_char; i++){
-        std::cout << i << " ,";
-        double p = ((double)rand())/RAND_MAX;
-        std::cout << p << " ,";
-        if (p >= proba_stay){
-            _character_simules[i]->Move_to_destination();
-        }
+        _character_simules[i]->Move_to_destination();
         _character_simules[i]->Display_info();
     }
     
-    // On tire uen nouvelle destination aléatoire pour les individus qui sont arrivés à destination
+    // Pour les individus arrivés à destination, il ya une probabilité de rester sur place. Sinon, on tire une nouvelle destination aléatoire.
     for (int i = 0; i < nb_char; i++){
         if (_character_simules[i]->is_Arrived()) {
-            _character_simules[i]->set_Destination(rand()%Character::bound_right, rand()%Character::bound_up);
+            double p = ((double)rand())/RAND_MAX;
+            if (p >= proba_stay){
+                _character_simules[i]->set_Destination(rand()%Character::bound_right, rand()%Character::bound_up);
+            }
         }
     }
     
@@ -98,16 +99,16 @@ void Simulator::simulate_one_cycle(){
         for (int j = 0; j < nb_char; j++){
             if ((i != j) && _character_simules[i]->Compare_pos_char(*_character_simules[j]) && _character_simules[j]->get_previous_status() == 'I') {
                 // Probabilité d'être infecté si l'on est sain (et non rétabli)
-                if (_character_simules[j]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
+                if (_character_simules[i]->get_previous_status() == 'S' && ((double)rand())/RAND_MAX <= proba_infect){
                     _character_simules[i] -> Infect();
                 }
             }
         }
     }
     
-    // À la fin du tour, chaque individu infecté à une chance de guérir
+    // À la fin du tour, chaque individu anciennement infecté à une chance de guérir
     for (int i = 0; i < nb_char; i++){
-        if (_character_simules[i] -> get_current_status() == 'I'){
+        if (_character_simules[i] -> get_previous_status() == 'I'){
             if (((double)rand())/RAND_MAX <= proba_recover){
                 _character_simules[i] -> Recover();
             }
