@@ -18,7 +18,6 @@
 #include "Individual.h"
 #include "Position.h"
 
-int nb_char2 = 100;
 
 // Constructeur
 
@@ -116,7 +115,7 @@ void GraphicSimulator::render() //
     }
     
     // Nous traçons un cercle pour chaque individu sur la grille
-    for (int i = 0; i < nb_char2; i++)
+    for (int i = 0; i < _sim -> get_nb_char(); i++)
     {
         Sint16 xc = _sim -> get_Character(i) -> get_Position().get_coord_x();
         Sint16 yc = _sim -> get_Character(i) -> get_Position().get_coord_y();

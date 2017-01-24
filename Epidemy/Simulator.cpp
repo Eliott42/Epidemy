@@ -68,6 +68,11 @@ int Simulator::get_nb_cycles(){
     return _nb_cycles;
 }
 
+// Pour le nombre de characters
+int Simulator::get_nb_char(){
+    return _nb_char;
+}
+
 
 //-----------------------------------------------------------------
 

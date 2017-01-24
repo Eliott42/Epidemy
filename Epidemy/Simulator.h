@@ -29,6 +29,7 @@ public:
     // Getters
     Character* get_Character(int i);
     int get_nb_cycles();
+    int get_nb_char();
     
     // Fonction pour lancer un tour de la simulation
     void simulate_one_cycle();
