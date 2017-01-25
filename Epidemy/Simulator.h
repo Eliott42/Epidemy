@@ -23,6 +23,7 @@ private:
 public:
     // Constructeur
     Simulator(int n, int m);
+    Simulator(int n, int m, Position epicentre, int radius);
     // Destructeur
     ~Simulator();
     

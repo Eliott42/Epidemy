@@ -17,7 +17,9 @@
 #include "Position.h"
 
 
-// Constructeur
+// Constructeurs
+
+// Première version où les infectés sont répartis aléatoirement dans la population au début
 
 Simulator::Simulator(int n, int m){
     _nb_cycles = n; // Initialisation du nb de cycles de la simulation
@@ -42,6 +44,34 @@ Simulator::Simulator(int n, int m){
         if (((double)rand())/RAND_MAX <= proba_infect_init){
             _character_simules[i] -> Infect();
             _character_simules[i] -> actualise_status();
+        }
+    }
+}
+
+// Seconde version où les infectés apparaissent dans une zone particulière, autour d'un foyer, jusque dans un certain rayon.
+
+Simulator::Simulator(int n, int m, Position epicentre, int radius){
+    _nb_cycles = n; // Initialisation du nb de cycles de la simulation
+    _nb_char = m; // Initialisation du nb de characters simulés
+    
+    srand((int)time(NULL)); // Initialise la seed de la fonction rand()
+    Character::bound_right = 100; // Initialisation de la taille de la grille (ville)
+    Character::bound_up = 100;
+    Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
+    Position random_des; // De même on définit une destination aléatoire pour cahque individu
+    
+    for (int i = 0; i < _nb_char; i++){
+        // Génération d'une position et d'une destination aléatoire
+        random_pos.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
+        random_des.set_coord_xy(rand()%Character::bound_right,rand()%Character::bound_up);
+        
+        // Si la position est dans le foyer d'infection (carré de centre "epicentre" et de largeur/longueur 2 x "radius" alors l'individu né infecté.
+        // Création de l'individu à cette position aléatoire
+        if (std::abs(random_pos.get_coord_x() - epicentre.get_coord_x()) <= radius && std::abs(random_pos.get_coord_y() - epicentre.get_coord_y()) <= radius) {
+            _character_simules.push_back(new Individual(random_pos, random_des, 'I'));
+        }
+        else{
+            _character_simules.push_back(new Individual(random_pos, random_des));
         }
     }
 }

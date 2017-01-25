@@ -36,7 +36,10 @@ private:
     int _count_cycle; // Compteur de cycles, que l'on incrémente à chaque tour et que l'on compare avec le nb max de cycles, pour savoir quand arreter la simulation
     
 public:
-    GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n, int m); //largeur de la fenêtre, hauteur de la fenêtre, nb de cycles dans la simulation, nb de char
+    GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n, int m);
+    // largeur de la fenêtre, hauteur de la fenêtre, nb de cycles dans la simulation, nb de char
+    GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n, int m, Position epicentre, int radius);
+    //largeur de la fenêtre, hauteur de la fenêtre, nb de cycles dans la simulation, nb de char, foyer de l'épidémie, rayon
     ~GraphicSimulator(){}; // Destructeur par défaut
     
     int  loop(); // Boucle principale, qui va appeler les autres fonctions

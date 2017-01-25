@@ -49,6 +49,36 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
     _sim = new Simulator(n,m);
 }
 
+// Constructeur avec foyer d'épidémie
+
+GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteur, int n, int m, Position epicentre, int radius)
+{
+    //----------Attributs concernant les graphismes--------------------------
+    
+    // Initialisation de l'interface graphique (image et temps)
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+    
+    // Définition de la fenêtre
+    _fenetre = SDL_CreateWindow("Simulation epidemie",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                largeur, hauteur, SDL_WINDOW_SHOWN);
+    
+    // Initialisation du rendu
+    _renderer = SDL_CreateRenderer(_fenetre, -1, SDL_RENDERER_ACCELERATED);
+    
+    // Initialisation du booléen pour que le programme ne quitte pas immédiatement
+    quit = false;
+    
+    // Initialisation des différents attributs temporels
+    _delta = 0.0f;
+    _current_time = 0.0f;
+    _previous_time = 0.0f;
+    
+    //----------Attributs concernant la simulation--------------------------
+    
+    _count_cycle = 1; // On commence le compteur de cycles à 1
+    _sim = new Simulator(n,m, epicentre, radius);
+}
+
 //-----------------------------------------------------------------
 
 
