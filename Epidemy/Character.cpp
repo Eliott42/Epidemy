@@ -129,6 +129,42 @@ void Character::Move_to_destination(){
     }
 }
 
+// Amélioration de la fonction précédente. Le principe est le suivant : on calcule la distance verticale et horizontale que l'individu doit parcourir pour arriver à destination. Tend que l'une est plus grande que l'autre, l'individu se déplace dans la direction selon laquelle la distance est la plus grande (disons horizontale). Quand il ya égalité, il change de direction (donc vertical). Au tour d'après il va à nouveau changer de direction, et ainsi de suite: on obtient un chemin "en escalier" jusqu'à destination.
+
+void Character::Move_to_destination2(){
+    // Distances à parcourir en x et y jusqu'à desination
+    int delta_x = std::abs(_destination.get_coord_x() - _position.get_coord_x());
+    int delta_y = std::abs(_destination.get_coord_y() - _position.get_coord_y());
+    std::cout << "dx :" << delta_x << ", dy :" << delta_y << "\n";
+    // S'il reste plus de distance en horizontal à faire qu'en vertical, on se déplace vers la gauche ou vers la droite
+    if (_arrived == 0){
+        if(delta_x >= delta_y){
+            if (_position.get_coord_x() < _destination.get_coord_x()){
+                Move_right();
+            }
+            else{
+                if (_position.get_coord_x() > _destination.get_coord_x()){
+                    Move_left();
+                }
+            }
+        }
+        else{
+            if (_position.get_coord_y() < _destination.get_coord_y()){
+                    Move_up();
+            }
+            else{
+                if (_position.get_coord_y() > _destination.get_coord_y()){
+                        Move_down();
+                }
+            }
+        }
+    }
+    // À la fin du déplacement, on regarde si le character est arrivé. On met à jour en conséquence le booléen "arrived"
+    if (_position == _destination){
+        _arrived = 1;
+    }
+}
+
 // Fonction retournant si le character est arrivé ou non
 
 bool Character::is_Arrived(){

@@ -33,8 +33,9 @@ public:
     virtual void Move_right();
     virtual void Move_up();
     virtual void Move_down();
-    virtual void Move();
-    virtual void Move_to_destination();
+    virtual void Move(); // Déplacement aléatoire vers l'une des 4 destinations (est/ouest/sud/nord)
+    virtual void Move_to_destination(); // Déplacement vers une destination
+    virtual void Move_to_destination2(); // Déplacement amélioré vers une destination
     virtual bool is_Arrived(); // Le character est-il arrivé à destination ?
 
     // Fonctions implémentées seulement dans les classes filles

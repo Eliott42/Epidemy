@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     */
     
     
-    GraphicSimulator simgraph(1024, 768, 100, 100); // Creation de la simulation
+    GraphicSimulator simgraph(1024, 768, 100, 3); // Creation de la simulation
     return simgraph.loop(); // Loop the simulation, exit when the loop is done
     
     

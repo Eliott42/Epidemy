@@ -87,8 +87,8 @@ void Simulator::simulate_one_cycle(){
     
     // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place.
     for (int i = 0; i < _nb_char; i++){
-        _character_simules[i]->Move_to_destination();
-        _character_simules[i]->Display_info();
+        _character_simules[i]->Move_to_destination2();
+        //_character_simules[i]->Display_info();
     }
     
     // Pour les individus arrivés à destination, il ya une probabilité de rester sur place. Sinon, on tire une nouvelle destination aléatoire.
