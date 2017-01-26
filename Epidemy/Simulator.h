@@ -9,6 +9,7 @@
 #define Simulator_h
 
 #include <vector>
+#include <fstream>
 
 #include "Position.h"
 #include "Character.h"
@@ -33,14 +34,14 @@ public:
     int get_nb_char();
     
     // Fonction pour lancer un tour de la simulation
-    void simulate_one_cycle();
+    void simulate_one_cycle(int k, std::ofstream& file);
     // Fonction pour lancer la simulation complète
-    void simulate_all();
+    void simulate_all(std::ofstream& file);
     
     // Fonction affichage de la position de tous les characters simulés.
     void Dislay_pos_simules();
-    // Fonction d'affichage de statistiques au i-ème tour sur la progression de l'épidémie.
-    void Dislay_statistics(int i);
+    // Fonction d'affichage et d'écriture dans le fichier "file", des statistiques au i-ème tour sur la progression de l'épidémie.
+    void Dislay_statistics(int i, std::ofstream& file);
     
 };
 

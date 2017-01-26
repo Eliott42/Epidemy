@@ -9,6 +9,7 @@
 #include <time.h>
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <SDL2/SDL.h>
 #include <SDL2_gfxPrimitives.h>
 
@@ -89,8 +90,12 @@ GraphicSimulator::GraphicSimulator(unsigned short largeur, unsigned short hauteu
 
 int GraphicSimulator::loop()
 {
-    int n = _sim -> get_nb_cycles();
+    // Initialisation du pointeur vers le fichier dans lequel nous allons écrire les résultats de la simulation
+    std::ofstream results_file;
+    results_file.open ("/Users/eliott/Desktop/ENSAE/Info/Epidemy/Epidemy/epidemy_results.csv",std::fstream::in | std::fstream::out | std::fstream::trunc);
+    results_file << "Sains ; Infectés ; Guéris ; Nouveaux infectés ; Nouveaux guéris \n";
     
+    int n = _sim -> get_nb_cycles();
     while (!quit && (_count_cycle < n)) // While quit is false
     {
         // Nous mettons à jour les temps, en déterminant quel est l'intervalle entre deux rendus
@@ -99,7 +104,7 @@ int GraphicSimulator::loop()
         _previous_time = _current_time;
         
         handleEvents(); // Fonction gérant les événements liées à la souris ou clavier
-        _sim -> simulate_one_cycle();
+        _sim -> simulate_one_cycle(_count_cycle, results_file);
         render();
         
         // Affichage de la simulation
@@ -108,6 +113,8 @@ int GraphicSimulator::loop()
         
         _count_cycle++ ;
     }
+    
+    results_file.close();
     
     return 0; // Valeur renvoyée dans main() : 0 indique que l'on quitte le programme
 }

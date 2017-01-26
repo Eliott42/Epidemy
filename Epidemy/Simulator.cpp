@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 #include "Simulator.h"
 #include "Character.h"
@@ -110,7 +111,7 @@ int Simulator::get_nb_char(){
 
 // Fonction qui lance un tour de la simulation : fait se déplacer (ou non) l'ensemble des individus, puis permet l'infection (ou non) des individus sur la même position
 
-void Simulator::simulate_one_cycle(){
+void Simulator::simulate_one_cycle(int k, std::ofstream& file){
     double proba_stay = 0.5; // Probabilité de rester sur place
     double proba_infect = 1; // Probabilité d'être infecté quand on est en contact avec un infecté
     double proba_recover = 0.03; // Probabilité de guérir
@@ -153,7 +154,7 @@ void Simulator::simulate_one_cycle(){
     }
     
     // Affichage des statistiques
-    Dislay_statistics(0);
+    Dislay_statistics(k, file);
     
     // À la fin du tour, on atualise les statuts des individus
     for (int i = 0; i < _nb_char; i++){
@@ -163,9 +164,9 @@ void Simulator::simulate_one_cycle(){
 
 // Fonction lançant la simulation totale : n cycles
 
-void Simulator::simulate_all(){
+void Simulator::simulate_all(std::ofstream& file){
     for (int i = 0; i < _nb_cycles; i++){
-        simulate_one_cycle();
+        simulate_one_cycle(i, file);
     }
 }
 
@@ -181,7 +182,7 @@ void Simulator::Dislay_pos_simules(){
 
 // Fonction permettant d'afficher des statistiques au i-ème tour sur la progression de l'épidémie
 
-void Simulator::Dislay_statistics(int i){
+void Simulator::Dislay_statistics(int i, std::ofstream& file){
     int count_infect = 0; // Compteur d'invidus infectés au total
     int count_recover = 0; // Compteur d'individus guéris au total
     int count_infect_previously = 0; // Compteur d'invidus qui étaient infectés au tour d'avant
@@ -206,8 +207,18 @@ void Simulator::Dislay_statistics(int i){
         }
     }
     
+    double prop_sane = 100*(double)(_nb_char - count_infect - count_recover)/_nb_char;
+    double prop_infected = 100*(double)count_infect/_nb_char;
+    double prop_recover = 100*(double)count_recover/_nb_char;
+    int nb_infected = count_infect - count_infect_previously;
+    int nb_recover = count_recover - count_recover_previously;
+    
+    // Affichage
     std::cout << "Au tour " << i << ":\n";
-    std::cout << "nouveaux infectés :" << count_infect - count_infect_previously << "\n";
-    std::cout << "nombre de guérisons :" << count_recover - count_recover_previously << "\n";
-    std::cout << "Proportions :" << 100*(double)(_nb_char - count_infect - count_recover)/_nb_char << "% sains, " << 100*(double)count_infect/_nb_char << "% infectés, " << 100*(double)count_recover/_nb_char << "% guéris \n";
+    std::cout << "nouveaux infectés :" << nb_infected << "\n";
+    std::cout << "nombre de guérisons :" << nb_recover << "\n";
+    std::cout << "Proportions :" << prop_sane << "% sains, " << prop_infected << "% infectés, " << prop_recover << "% guéris \n";
+    
+    // Écriture dans le fichier file
+    file << prop_sane << " ; " << prop_infected << " ; " << prop_recover << " ; " << nb_infected << " ; " << nb_recover << "\n";
 }
