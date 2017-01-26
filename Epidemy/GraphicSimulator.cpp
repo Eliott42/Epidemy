@@ -109,7 +109,7 @@ int GraphicSimulator::loop()
         
         // Affichage de la simulation
         SDL_RenderPresent(_renderer);
-        SDL_Delay(500); // pause pour voir le rendu
+        SDL_Delay(400); // pause pour voir le rendu
         
         _count_cycle++ ;
     }
