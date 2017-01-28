@@ -144,7 +144,7 @@ void Simulator::simulate_one_cycle(int k, std::ofstream& file){
         }
     }
     
-    // À la fin du tour, chaque individu anciennement infecté à une chance de guérir
+    // À la fin du tour, chaque individu anciennement infecté a une chance de guérir
     for (int i = 0; i < _nb_char; i++){
         if (_character_simules[i] -> get_previous_status() == 'I'){
             if (((double)rand())/RAND_MAX <= proba_recover){
@@ -207,11 +207,13 @@ void Simulator::Dislay_statistics(int i, std::ofstream& file){
         }
     }
     
+    // On calcule les différentes proportions des statuts
     double prop_sane = 100*(double)(_nb_char - count_infect - count_recover)/_nb_char;
     double prop_infected = 100*(double)count_infect/_nb_char;
     double prop_recover = 100*(double)count_recover/_nb_char;
-    int nb_infected = count_infect - count_infect_previously;
     int nb_recover = count_recover - count_recover_previously;
+    int nb_infected = count_infect - count_infect_previously + nb_recover;
+    
     
     // Affichage
     std::cout << "Au tour " << i << ":\n";
