@@ -31,7 +31,7 @@ Simulator::Simulator(int n, int m){
     Character::bound_up = 100;
     Position random_pos; // On définit une position, qui va ensuite changer aléatoirement pour initialiser les individus
     Position random_des; // De même on définit une destination aléatoire pour cahque individu
-    double proba_infect_init = 0.6; // Probabilité que l'individu soit infecté dès le début
+    double proba_infect_init = 0.2; // Probabilité que l'individu soit infecté dès le début
     
     for (int i = 0; i < _nb_char; i++){
         // Génération d'une position et d'une destination aléatoire
@@ -113,7 +113,7 @@ int Simulator::get_nb_char(){
 
 void Simulator::simulate_one_cycle(int k, std::ofstream& file){
     double proba_stay = 0.5; // Probabilité de rester sur place
-    double proba_infect = 1; // Probabilité d'être infecté quand on est en contact avec un infecté
+    double proba_infect = 0.2; // Probabilité d'être infecté quand on est en contact avec un infecté
     double proba_recover = 0.03; // Probabilité de guérir
     
     // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place.

@@ -19,7 +19,7 @@ private:
     
 public:
     // Constructeur
-    Individual();
+    Individual(); // Par défaut en (0,0) avec destination (0,0)
     Individual(Position pos, Position des);
     Individual(Position pos, Position des, char status);
     

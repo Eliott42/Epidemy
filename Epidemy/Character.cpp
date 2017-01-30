@@ -16,12 +16,14 @@ int Character::bound_up = 100;
 
 // Constructeurs
 
+// Par défaut
 Character::Character(){
-    _position = Position(); // par défaut le character est en (0,0)
+    _position = Position(); // Le character est en (0,0)
     _destination = Position(); // Sa destination est (0,0)
     _arrived = 1;
 }
 
+// On spécifie ici la position de départ et la destination
 Character::Character(Position pos, Position des){
     _position = pos;
     _destination = des;
@@ -54,6 +56,7 @@ void Character::set_Destination(int x, int y){
 
 // Fonctions déplacement
 
+// exemple de déplacement : aller à gauche. Si l'on est en à l'abscisse x, cela revient à aller en x-1. cela est possible si et seulement si nous ne sommes pas sur le bord gauche, i.e en x=0
 void Character::Move_left(){
     if (_position.get_coord_x() > 0){
         _position.set_coord_x(_position.get_coord_x() - 1);
@@ -78,11 +81,14 @@ void Character::Move_up(){
     }
 }
 
+// Fonction permettant de se déplacer aléatoirement dans l'un des 4 sens
+
 void Character::Move(){
     int i;
     i = rand()%4; // Génère un nombre aléatoire entre 0 et 3
     std::cout << i << ", " ;
     
+    // En foction de i, on part dans un sens : marche aléatoire
     switch (i){
         case 0:
             Move_left();
@@ -129,7 +135,13 @@ void Character::Move_to_destination(){
     }
 }
 
-// Amélioration de la fonction précédente. Le principe est le suivant : on calcule la distance verticale et horizontale que l'individu doit parcourir pour arriver à destination. Tend que l'une est plus grande que l'autre, l'individu se déplace dans la direction selon laquelle la distance est la plus grande (disons horizontale). Quand il ya égalité, il change de direction (donc vertical). Au tour d'après il va à nouveau changer de direction, et ainsi de suite: on obtient un chemin "en escalier" jusqu'à destination.
+/*
+ Amélioration de la fonction précédente. Le principe est le suivant :
+ On calcule la distance verticale et horizontale que l'individu doit parcourir pour arriver à destination.
+ Tant que l'une est plus grande que l'autre, l'individu se déplace dans la direction selon laquelle la distance est la plus grande (disons horizontale).
+ Quand il ya égalité, il change de direction (donc vertical).
+ Au tour d'après il va à nouveau changer de direction, et ainsi de suite: on obtient un chemin "en escalier" jusqu'à destination.
+ */
 
 void Character::Move_to_destination2(){
     // Distances à parcourir en x et y jusqu'à desination

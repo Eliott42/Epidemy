@@ -12,11 +12,13 @@
 
 // Constructeurs
 
+// Appel du constructeur par défaut de character, et statut "sain"
 Individual::Individual() : Character(){
     _current_status = 'S';
     _previous_status = 'S';
 }
 
+// On spécifie la position initiale et la destination, mais le statut est sain par défaut.
 Individual::Individual(Position pos, Position des) : Character(pos, des){
     _current_status = 'S';
     _previous_status = 'S';
@@ -54,10 +56,12 @@ char Individual::get_previous_status(){
 
 // Fonctions pour changer le statut
 
+// L'individu est infecté, son statut passe à I
 void Individual::Infect(){
     set_current_status('I');
 }
 
+// Il guérit, le statut pas à R
 void Individual::Recover(){
     set_current_status('R');
 }

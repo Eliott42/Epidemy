@@ -11,13 +11,15 @@
 class Position{
     
 private:
+    // La classe position possède deux attributs ; des entiers indiquant la coordonnée x (abscisse) et la coordonnée y (ordonnée) sur la grille
     int _x;
     int _y;
     
+    
 public:
     // Constructeurs
-    Position();
-    Position(int x, int y);
+    Position(); // Par défaut crée une position en (0,0)
+    Position(int x, int y); // Crée une position en (x,y)
     
     // Setters
     void set_coord_x(int x);

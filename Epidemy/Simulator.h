@@ -23,8 +23,8 @@ private:
     
 public:
     // Constructeur
-    Simulator(int n, int m);
-    Simulator(int n, int m, Position epicentre, int radius);
+    Simulator(int n, int m); // Constructeur avec n cycle et m individus. Les infectés sont tirés aléatoirement au départ
+    Simulator(int n, int m, Position epicentre, int radius); // Constructeur avec n cycle et m individus. Les infectés sont ceux situé dans une zone de départ avec un rayon : le foyer de l'épidémie
     // Destructeur
     ~Simulator();
     
@@ -33,6 +33,7 @@ public:
     int get_nb_cycles();
     int get_nb_char();
     
+    // Les méthodes suivantes appellelent un fichier en référence pour l'écriture des résultats
     // Fonction pour lancer un tour de la simulation
     void simulate_one_cycle(int k, std::ofstream& file);
     // Fonction pour lancer la simulation complète

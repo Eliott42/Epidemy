@@ -19,8 +19,8 @@ protected:
     
 public:
     // Constructeur
-    Character();
-    Character(Position pos, Position des);
+    Character(); // Par défaut, le personnage apparait en (0,0) et à pour destination (0,0)
+    Character(Position pos, Position des); // On spécifie ici la position de départ et la destination
     
     // Getter
     virtual Position get_Position();
@@ -39,9 +39,11 @@ public:
     virtual bool is_Arrived(); // Le character est-il arrivé à destination ?
 
     // Fonctions implémentées seulement dans les classes filles
-    virtual char get_current_status() {return '0';}
+    // Elle concerne le "statut", qui n'est implémenté que chez les individus
+    // Ces fonctions ne doivent donc rien faire pour un character
+    virtual char get_current_status() {return '0';} // retourne seulement 0
     virtual char get_previous_status() {return '0';}
-    virtual void Infect(){}
+    virtual void Infect(){} // ne fait rien
     virtual void Recover(){}
     virtual void actualise_status(){}
     
@@ -50,7 +52,8 @@ public:
     
     // Affichage
     virtual void Display_info();
-
+    
+    // Dimensions de la grille : statique. Elles sont renseignées dans simulator.
     static int bound_right;
     static int bound_up;
 
