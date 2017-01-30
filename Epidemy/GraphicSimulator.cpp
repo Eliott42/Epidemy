@@ -93,6 +93,7 @@ int GraphicSimulator::loop()
     // Initialisation du pointeur vers le fichier dans lequel nous allons écrire les résultats de la simulation
     std::ofstream results_file;
     results_file.open ("/Users/eliott/Desktop/ENSAE/Info/Epidemy/Epidemy/epidemy_results.csv",std::fstream::in | std::fstream::out | std::fstream::trunc);
+    // results_file.open ("epidemy_results.csv",std::fstream::in | std::fstream::out | std::fstream::trunc);
     results_file << "Sains ; Infectés ; Guéris ; Nouveaux infectés ; Nouveaux guéris \n";
     
     int n = _sim -> get_nb_cycles();

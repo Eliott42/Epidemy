@@ -24,6 +24,10 @@ int main(int argc, char **argv) {
         std::cout << "Pas le bon nombre d'arguments !!!";
         return 0;
     }
+    if (atoi(argv[1]) <= 0){
+        std::cout << "Impossible de rentrer une population négative !!!";
+        return 0;
+    }
     
     // Cas de la simulation avec tirage initial uniforme
     if (atoi(argv[2]) == 1){

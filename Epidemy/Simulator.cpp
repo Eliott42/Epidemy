@@ -113,7 +113,7 @@ int Simulator::get_nb_char(){
 
 void Simulator::simulate_one_cycle(int k, std::ofstream& file){
     double proba_stay = 0.5; // Probabilité de rester sur place
-    double proba_infect = 0.2; // Probabilité d'être infecté quand on est en contact avec un infecté
+    double proba_infect = 0.7; // Probabilité d'être infecté quand on est en contact avec un infecté
     double proba_recover = 0.03; // Probabilité de guérir
     
     // On fait se déplacer l'ensemble des individus, avec une proba p de rester sur place.
