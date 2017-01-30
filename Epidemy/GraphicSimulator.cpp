@@ -2,7 +2,7 @@
 //  GraphicSimulator.cpp
 //  Epidemy
 //
-//  Created by Eliott Jouhaud on 30/12/2016.
+//  Created by Eliott Jouhaud & Johan Guyot on 30/12/2016.
 //
 
 #include <stdio.h>

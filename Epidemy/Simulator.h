@@ -2,7 +2,7 @@
 //  Simulator.h
 //  Epidemy
 //
-//  Created by Eliott Jouhaud on 16/12/2016.
+//  Created by Eliott Jouhaud & Johan Guyot on 16/12/2016.
 //
 
 #ifndef Simulator_h

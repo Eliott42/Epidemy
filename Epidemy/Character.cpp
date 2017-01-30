@@ -2,7 +2,7 @@
 //  Character.cpp
 //  Epidemy
 //
-//  Created by Eliott Jouhaud on 08/12/2016.
+//  Created by Eliott Jouhaud & Johan Guyot on 08/12/2016.
 //
 
 #include <stdio.h>

@@ -2,7 +2,7 @@
 //  Character.h
 //  Epidemy
 //
-//  Created by Eliott Jouhaud on 08/12/2016.
+//  Created by Eliott Jouhaud & Johan Guyot on 08/12/2016.
 //
 
 #ifndef Character_h

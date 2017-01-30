@@ -2,7 +2,7 @@
 //  Position.h
 //  Epidemy
 //
-//  Created by Eliott Jouhaud on 24/11/2016.
+//  Created by Eliott Jouhaud & Johan Guyot on 24/11/2016.
 //
 
 #ifndef Position_h
