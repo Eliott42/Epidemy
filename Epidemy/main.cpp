@@ -19,21 +19,28 @@
 
 int main(int argc, char **argv) {
     
+    // Test si le bon nombre d'argument est entré
+    if (argc != 3){
+        std::cout << "Pas le bon nombre d'arguments !!!";
+        return 0;
+    }
     
-    /*
-    Simulator sim(10);
-    
-    sim.Dislay_pos_simules();
-    sim.simulate_all();
-    sim.Dislay_pos_simules();
-    */
-    
-    
-    Position foyer(50,50);
-    GraphicSimulator simgraph(1024, 768, 300, 1000); // Creation de la simulation
-    
-    // GraphicSimulator simgraph(1024, 768, 1000, 1000, foyer, 15); // Creation de la simulation
-    return simgraph.loop(); // Loop the simulation, exit when the loop is done
+    // Cas de la simulation avec tirage initial uniforme
+    if (atoi(argv[2]) == 1){
+        GraphicSimulator simgraph(1024, 768, 400, atoi(argv[1])); // Creation de la simulation
+        return simgraph.loop(); // Fait tourner la simulation, quitte quand la boucle est finie.
+    }
+    else{
+        // Cas de la simulation avec foyer initial
+        if (atoi(argv[2]) == 2){
+            Position foyer(50,50);
+            GraphicSimulator simgraph(1024, 768, 400, atoi(argv[1]), foyer, 15); // Creation de la simulation
+            return simgraph.loop(); // Fait tourner la simulation, quitte quand la boucle est finie.
+        }
+        else{
+            std::cout << "Numéro de simulation inexistant !!!";
+        }
+    }
     
     
     return 0;
